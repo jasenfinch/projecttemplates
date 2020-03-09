@@ -28,5 +28,5 @@ template('A project title',path = '.',type = 'report',start = FALSE)
 
 To add in the future:
 
-* add git and GitHub support
-* add docker support
+* git and GitHub support
+* docker support
