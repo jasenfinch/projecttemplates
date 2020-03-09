@@ -20,7 +20,7 @@ bibliography: references.bib
 ---
 
 ```{{r setup, include=FALSE}}
-knitr::opts_chunk$set(echo = FALSE,message = FALSE,warning = FALSE)
+opts_chunk$set(echo = FALSE,message = FALSE,warning = FALSE)
 ```
 '),
     presentation = glue('---
@@ -68,7 +68,7 @@ bibliography: references.bib
 ---
 
 ```{{r setup, include=FALSE}}
-knitr::opts_chunk$set(echo = FALSE,
+opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
 ```
@@ -110,7 +110,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE,
+opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
 ```

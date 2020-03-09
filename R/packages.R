@@ -2,7 +2,7 @@
 packages <- function(project_directory,type){
   
   packs <- c('drake','conflicted','rmarkdown',
-             'callr','magrittr','purrr','progress')
+             'callr','magrittr','purrr','progress','knitr')
   
   custom_packs <- list(
     report = character(),

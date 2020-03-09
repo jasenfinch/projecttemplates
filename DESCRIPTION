@@ -18,4 +18,5 @@ Imports: glue,
   rstudioapi,
   stringr
 Depends: knitr,
-  rmarkdown
+  rmarkdown,
+  yaml
