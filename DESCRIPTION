@@ -17,3 +17,5 @@ Imports: glue,
   renv,
   rstudioapi,
   stringr
+Depends: knitr,
+  rmarkdown
