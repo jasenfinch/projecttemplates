@@ -1,9 +1,10 @@
 #' @importFrom stringr str_c str_replace_all
 #' @importFrom magrittr %>%
 #' @importFrom rstudioapi isAvailable initializeProject
+#' @importFrom renv init
 #' @export
 
-template <- function(project_name,path = '.'){
+template <- function(project_name, path = '.', restart = TRUE){
   
   project_name_directory <- project_name %>%
     str_replace_all(' ','_')
@@ -30,4 +31,11 @@ template <- function(project_name,path = '.'){
   message('Adding drake infrasturture')
   invisible(file.copy(str_c(template_directory,'_drake.R',sep = '/'),project_directory))
   invisible(file.copy(str_c(template_directory,'plan.R',sep = '/'),str_c(project_directory,'R',sep = '/')))
+  invisible(file.copy(str_c(template_directory,'packages.R',sep = '/'),str_c(project_directory,'R',sep = '/')))
+  
+  message('Initialising renv cache')
+  wd <- getwd()
+  setwd(project_directory)
+  init(restart = restart)
+  setwd(wd)
 }

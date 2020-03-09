@@ -2,9 +2,8 @@
 renv::restore()
 
 ## Load dependant CRAN libraries
-pacman::p_load(drake,
-               conflicted,
-               rmarkdown)
+pacman::p_load(drake,conflicted,rmarkdown,
+               callr,magrittr,purrr,progress)
 
 ## Load dependant GitHub libraries
 # pacman::p_load_gh()

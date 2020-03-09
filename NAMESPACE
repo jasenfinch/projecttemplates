@@ -2,6 +2,7 @@
 
 export(template)
 importFrom(magrittr,"%>%")
+importFrom(renv,init)
 importFrom(rstudioapi,initializeProject)
 importFrom(rstudioapi,isAvailable)
 importFrom(stringr,str_c)
