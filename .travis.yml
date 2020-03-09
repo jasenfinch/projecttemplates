@@ -1,4 +1,15 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
 language: R
 cache: packages
+warnings_are_errors: true
+
+r:
+- release
+- devel
+
+notifications:
+  email: false
+  slack:
+    rooms:
+      secure: JkRqqqeSU2hTJkbY4P9C/jsoGQ/8siAVPUMeeWCi2loRyIO4+g/HTN6g7GTZ6MGVs8WZQjovE7AjTLXlSYH56KjCxz6mocUTU5mCULlK0WuoiF2emBtIa6OmfF7CNNTIwoeoyHC9DAVOacrn7CLDzYfQbir9CqWHLRqROrROf/GDuUql3QKFZb9S/XZz8cV3rcxjcXMLYkTmSvyer7QotAbpMO7H4vjyIVJsOlZXOoDiFonIE6nrkt+BuwR0QttCL82fxtiPWo08BtTH2O5ctIiORACFNKXgCZ+uszJd5mmJ1UiRJSvRzSDblcWBes3LCMGotFDvuIKlkxUC87zCGymNSqEdVc3FlLPSv1Q1qDefCPesAbusrQznVWNKEdU3JAeIuyzgJTFjtuUgXRd7lJ+6j4gEIPSIviQwT0fR+4oQH9zMqFl7gOwef8S0Yo+zEQqz7UQUjk2+rFtGAlE8+8o++tvjwhamXigfl4EU9tny0CCzfB9q2bmeex1FHhQGqo+s3kHF1dmV/VfvL1SDPoTg6O+bKML7x3dHvnDKqvy1TjRfov1kA92V5trv1Cw9Cg5q2NgkjMwSxZZdEEOupfVWfddH4PtLzHq1hWRWZPb8zvg+eedEnorWP2U+83z5/83ifyDHdipQ99noME3oFTUIfLyItu1xWSBVggyYzyM=
+    on_success: change
+    on_failure: change
