@@ -45,7 +45,7 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   
   template_directory <- system.file('templates',package = 'projecttemplates')
   
-  readme(project_name,project_directory)
+  readme(project_name,project_directory,type)
   
   message('Adding drake infrasturture')
   

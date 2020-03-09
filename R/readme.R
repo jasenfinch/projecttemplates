@@ -1,6 +1,15 @@
 
-readme <- function(project_name,path){
-  header <- str_c('# ',project_name)
+readme <- function(project_name,project_directory,type){
   
-  writeLines(header,str_c(path,'README.md',sep = '/'))
+  
+  header <- glue('# {project_name}
+
+This project is powered the [drake](https://docs.ropensci.org/drake/) package for workflow management and
+[renv](https://github.com/rstudio/renv) package `R` environment reproducibility.
+
+Add analysis code to `R/plan.R`, and communicate your results in `{type}/{type}.Rmd`.
+To run the analysis execute `drake::r_make()` in an `R` session loaded from within the project directory.
+')
+  
+  writeLines(header,str_c(project_directory,'/README.md'))
 }
