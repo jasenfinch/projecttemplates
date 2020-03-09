@@ -1,7 +1,17 @@
+#' project templates
+#' @description Generate a project template directory.
+#' @param project_name project name/title
+#' @param path target file path for project directory 
+#' @param type project type
+#' @param start TRUE/FALSE should the project be automatically activated
 #' @importFrom stringr str_c str_replace_all
 #' @importFrom magrittr %>%
 #' @importFrom rstudioapi isAvailable initializeProject
 #' @importFrom renv init
+#' @examples 
+#' \dontrun{
+#' template('A new project',type = 'report',start = FALSE)
+#' }
 #' @export
 
 template <- function(project_name, path = '.', type = c('report','manuscript','presentation'), start = TRUE){
