@@ -16,7 +16,8 @@ Imports: glue,
   magrittr,
   renv,
   rstudioapi,
-  stringr
-Depends: knitr,
-  rmarkdown,
-  yaml
+  stringr,
+  callr
+Suggests: 
+    testthat,
+    covr

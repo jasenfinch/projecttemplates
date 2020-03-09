@@ -8,6 +8,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom rstudioapi isAvailable initializeProject
 #' @importFrom renv init
+#' @importFrom callr r
 #' @examples 
 #' \dontrun{
 #' template('A new project',type = 'report',start = FALSE)
@@ -57,8 +58,10 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   output(project_name,project_directory,type)
   
   message('Initialising renv cache')
-  wd <- getwd()
-  setwd(project_directory)
-  init(restart = start)
-  setwd(wd)
+  invisible(r(function(project_directory,start){
+    setwd(project_directory)
+    renv::init(restart = start)
+  },
+    args = list(project_directory = project_directory,
+                start = start)))
 }
