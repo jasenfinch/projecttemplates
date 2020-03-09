@@ -2,6 +2,8 @@
 
 export(template)
 importFrom(glue,glue)
+importFrom(lubridate,month)
+importFrom(lubridate,year)
 importFrom(magrittr,"%>%")
 importFrom(renv,init)
 importFrom(rstudioapi,initializeProject)
