@@ -96,7 +96,7 @@ knitr::opts_chunk$set(echo = FALSE,
 # Acknowlegements
 
 ```{{r check,comment="",cache=FALSE}}
-manuscript_check(checks = c("word count"))
+manuscriptCheck(checks = c("word count"))
 ```
 
 # References
@@ -188,7 +188,7 @@ knitr::opts_chunk$set(echo = FALSE,
   
   if (type == 'manuscript') {
     invisible(file.copy(str_c(template_directory,'template.docx',sep = '/'),str_c(project_directory,type,sep = '/')))
-    invisible(file.copy(str_c(template_directory,'manuscriptCheck.R',sep = '/'),str_c(project_directory,'R',sep = '/')))
+    invisible(file.copy(str_c(template_directory,'manuscriptCheck.R',sep = '/'),str_c(project_directory,'R/functions',sep = '/')))
     writeLines(templates[[type]],str_c(path,'/',type,'.Rmd'))
     writeLines(templates[['figures']],str_c(path,'/','figures.Rmd'))
     writeLines(templates[['tables']],str_c(path,'/','tables.Rmd'))

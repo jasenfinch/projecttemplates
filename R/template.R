@@ -41,7 +41,7 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   
   invisible(file.copy(str_c(template_directory,'_drake.R',sep = '/'),project_directory))
   plan(project_directory,type)
-  invisible(file.copy(str_c(template_directory,'packages.R',sep = '/'),str_c(project_directory,'R',sep = '/')))
+  packages(project_directory,type)
   
   message('Adding output templates')
   output(project_name,project_directory,type)
