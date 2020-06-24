@@ -4,14 +4,24 @@ packages <- function(project_directory,type){
   packs <- c('drake','conflicted','rmarkdown',
              'callr','magrittr','purrr','progress','knitr')
   
-  custom_packs <- list(
+  custom_packs_cran <- list(
     report = character(),
     presentation = c('xaringan'),
     manuscript = c('bookdown')
   )
   
-  packs <- packs %>%
-    c(.,custom_packs[[type]]) %>%
+  packs_cran <- packs %>%
+    c(.,custom_packs_cran[[type]]) %>%
+    str_c(collapse = ',')
+  
+  custom_packs_gh <- list(
+    report = character(),
+    presentation = character(),
+    manuscript = c('"benmarwick/wordcountaddin"')
+  )
+  
+  packs_gh <- c() %>%
+    c(.,custom_packs_gh[[type]]) %>%
     str_c(collapse = ',')
   
   script <- glue('
@@ -19,10 +29,10 @@ packages <- function(project_directory,type){
 renv::restore()
 
 ## Load dependant CRAN libraries
-pacman::p_load({packs})
+pacman::p_load({packs_cran},install = FALSE)
 
 ## Load dependant GitHub libraries
-# pacman::p_load_gh()
+pacman::p_load_gh({packs_gh},install = FALSE)
 
 ## Resolve conflicts
 # conflict_prefer(quiet = T)

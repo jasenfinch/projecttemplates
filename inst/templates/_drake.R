@@ -7,4 +7,4 @@ source('R/packages.R')
 
 source('R/plan.R')
 
-drake_config(plan,verbose = 2)
+drake_config(plan)

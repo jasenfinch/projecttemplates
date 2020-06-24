@@ -48,7 +48,7 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   
   readme(project_name,project_directory,type)
   
-  message('Adding drake infrasturture')
+  message('Adding drake infrastructure')
   
   invisible(file.copy(str_c(template_directory,'_drake.R',sep = '/'),project_directory))
   plan(project_directory,type)
@@ -60,7 +60,7 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   message('Initialising renv cache')
   invisible(r(function(project_directory,start){
     setwd(project_directory)
-    renv::init(bare = TRUE,restart = start)
+    renv::init()
   },
     args = list(project_directory = project_directory,
                 start = start)))
