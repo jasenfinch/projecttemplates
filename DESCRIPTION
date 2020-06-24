@@ -20,4 +20,5 @@ Imports: glue,
   callr
 Suggests: 
     testthat,
-    covr
+    covr,
+    devtools
