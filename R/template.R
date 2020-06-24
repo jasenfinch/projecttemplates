@@ -59,8 +59,7 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   
   message('Initialising renv cache')
   invisible(r(function(project_directory,start){
-    setwd(project_directory)
-    renv::init()
+    renv::init(project = project_directory)
   },
     args = list(project_directory = project_directory,
                 start = start)))
