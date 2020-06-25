@@ -1,6 +1,9 @@
+^renv$
+^renv\.lock$
 ^LICENSE\.md$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.travis\.yml$
 ^appveyor\.yml$
 ^codecov\.yml$
+^\.github$

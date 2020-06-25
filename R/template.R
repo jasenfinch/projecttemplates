@@ -3,19 +3,20 @@
 #' @param project_name project name/title
 #' @param path target file path for project directory 
 #' @param type project type
-#' @param start TRUE/FALSE should the project be automatically activated
+#' @param git TRUE/FALSE. Initialise a Git repository?
+#' @param github TRUE/FALSE. Create a GitHub repository?
+#' @param private TRUE/FALSE. Should the GitHub repository be private. Ignored if argument \code{github} is FALSE.
+#' @param start TRUE/FALSE. Should the project be automatically activated?
 #' @importFrom stringr str_c str_replace_all
 #' @importFrom magrittr %>%
-#' @importFrom rstudioapi isAvailable initializeProject
-#' @importFrom renv init
-#' @importFrom callr r
+#' @importFrom rstudioapi isAvailable initializeProject openProject
 #' @examples 
 #' \dontrun{
 #' template('A new project',type = 'report',start = FALSE)
 #' }
 #' @export
 
-template <- function(project_name, path = '.', type = c('report','manuscript','presentation'), start = TRUE){
+template <- function(project_name, path = '.', type = c('report','manuscript','presentation'), git = TRUE, github = TRUE, private = TRUE, start = TRUE){
   
   if (missing(type)) {
     type <- 'report'
@@ -44,23 +45,27 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   
   dir.create(str_c(project_directory,'R','functions',sep = '/'),recursive = TRUE)
   
-  template_directory <- system.file('templates',package = 'projecttemplates')
-  
   readme(project_name,project_directory,type)
   
-  message('Adding drake infrastructure')
+  drakeInfrastructure(project_directory,type)
   
-  invisible(file.copy(str_c(template_directory,'_drake.R',sep = '/'),project_directory))
-  plan(project_directory,type)
-  packages(project_directory,type)
-  
-  message('Adding output templates')
   output(project_name,project_directory,type)
   
-  message('Initialising renv cache')
-  invisible(r(function(project_directory,start){
-    renv::init(project = project_directory)
-  },
-    args = list(project_directory = project_directory,
-                start = start)))
+  renvInitialise(project_directory)
+  
+  if (isTRUE(git)) {
+   createGit(project_directory)
+  }
+  
+  if (isTRUE(github)) {
+   createGithub(project_name,path,private)
+  }
+  
+  message(glue('Template output complete. See {project_directory}/README.md for details on how to get started.'))
+  
+  if (isTRUE(start) & isAvailable()) {
+    message('Opening project in a new RStudio session')
+    openProject(project_directory,newSession = TRUE)
+  }
+  
 }
