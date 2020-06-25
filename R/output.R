@@ -2,6 +2,9 @@
 #' @importFrom utils installed.packages
 
 output <-  function(project_name,project_directory,type){
+  
+  message('Adding output templates')
+  
   path <- str_c(project_directory,'/',type)
   
   dir.create(path)

@@ -3,6 +3,8 @@
 #' @importFrom gh gh
 
 createGithub <- function(project_name,path,private){
+  message('Creating GitHub repository')
+  
   project_name_directory <- project_name %>%
     str_replace_all(' ','_')
   

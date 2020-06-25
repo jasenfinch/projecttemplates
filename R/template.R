@@ -10,8 +10,6 @@
 #' @importFrom stringr str_c str_replace_all
 #' @importFrom magrittr %>%
 #' @importFrom rstudioapi isAvailable initializeProject openProject
-#' @importFrom renv init
-#' @importFrom callr r
 #' @examples 
 #' \dontrun{
 #' template('A new project',type = 'report',start = FALSE)
@@ -47,32 +45,17 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   
   dir.create(str_c(project_directory,'R','functions',sep = '/'),recursive = TRUE)
   
-  template_directory <- system.file('templates',package = 'projecttemplates')
-  
   readme(project_name,project_directory,type)
   
-  message('Adding drake infrastructure')
+  drakeInfrastructure(project_directory)
   
-  invisible(file.copy(str_c(template_directory,'_drake.R',sep = '/'),project_directory))
-  plan(project_directory,type)
-  packages(project_directory,type)
-  
-  message('Adding output templates')
   output(project_name,project_directory,type)
   
-  message('Initialising renv cache')
-  invisible(r(function(project_directory){
-    renv::init(project = project_directory)
-  },
-  args = list(project_directory = project_directory)))
-  
   if (isTRUE(git)) {
-    message('Initialising git')
    createGit(project_directory)
   }
   
   if (isTRUE(github)) {
-    message('Creating GitHub repository')
    createGithub(project_name,path,private)
   }
   
