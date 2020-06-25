@@ -8,7 +8,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom rstudioapi isAvailable initializeProject openProject
 #' @importFrom renv init
-#' @importFrom callr r
+#' @importFrom callr r_copycat
 #' @examples 
 #' \dontrun{
 #' template('A new project',type = 'report',start = FALSE)
@@ -38,7 +38,7 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   
   dir.create(project_directory)
   
-  project_directory <- project_directory %>%
+  project_directory_full <- project_directory %>%
     normalizePath()
   
   if (isAvailable()) {
@@ -61,14 +61,16 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   output(project_name,project_directory,type)
   
   message('Initialising renv cache')
-  invisible(r(function(project_directory){
+  invisible(r_copycat(function(project_directory){
     renv::init(project = project_directory)
   },
-  args = list(project_directory = project_directory)))
+  args = list(project_directory = project_directory_full)))
   
   if (isTRUE(start) & isAvailable()) {
     message('Opening project in a new RStudio session')
     openProject(project_directory,newSession = TRUE)
   }
+  
+  message(glue('Template output complete. See {project_directory}/README.md for details on how to get started.'))
   
 }
