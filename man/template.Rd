@@ -8,6 +8,7 @@ template(
   project_name,
   path = ".",
   type = c("report", "manuscript", "presentation"),
+  git = TRUE,
   start = TRUE
 )
 }
@@ -18,7 +19,9 @@ template(
 
 \item{type}{project type}
 
-\item{start}{TRUE/FALSE should the project be automatically activated}
+\item{git}{TRUE/FALSE. Initialise a Git repository?}
+
+\item{start}{TRUE/FALSE. Should the project be automatically activated?}
 }
 \description{
 Generate a project template directory.

@@ -2,6 +2,9 @@
 
 export(template)
 importFrom(callr,r)
+importFrom(git2r,add)
+importFrom(git2r,commit)
+importFrom(git2r,init)
 importFrom(glue,glue)
 importFrom(lubridate,month)
 importFrom(lubridate,year)

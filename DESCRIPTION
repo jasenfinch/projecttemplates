@@ -17,7 +17,8 @@ Imports: glue,
   renv,
   rstudioapi,
   stringr,
-  callr
+  callr,
+  git2r
 Suggests: 
     testthat,
     covr,

@@ -3,19 +3,21 @@
 #' @param project_name project name/title
 #' @param path target file path for project directory 
 #' @param type project type
-#' @param start TRUE/FALSE should the project be automatically activated
+#' @param git TRUE/FALSE. Initialise a Git repository?
+#' @param start TRUE/FALSE. Should the project be automatically activated?
 #' @importFrom stringr str_c str_replace_all
 #' @importFrom magrittr %>%
 #' @importFrom rstudioapi isAvailable initializeProject openProject
 #' @importFrom renv init
 #' @importFrom callr r
+#' @importFrom git2r init add commit
 #' @examples 
 #' \dontrun{
 #' template('A new project',type = 'report',start = FALSE)
 #' }
 #' @export
 
-template <- function(project_name, path = '.', type = c('report','manuscript','presentation'), start = TRUE){
+template <- function(project_name, path = '.', type = c('report','manuscript','presentation'), git = TRUE, start = TRUE){
   
   if (missing(type)) {
     type <- 'report'
@@ -38,9 +40,6 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   
   dir.create(project_directory)
   
-  project_directory_full <- project_directory %>%
-    normalizePath()
-  
   if (isAvailable()) {
     initializeProject(project_directory)
   }
@@ -62,13 +61,21 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   
   message('Initialising renv cache')
   invisible(r(function(project_directory){
-    renv::init(project = project_directory,force = TRUE)
+    renv::init(project = project_directory)
   },
-  args = list(project_directory = project_directory_full)))
+  args = list(project_directory = project_directory)))
   
   if (isTRUE(start) & isAvailable()) {
     message('Opening project in a new RStudio session')
     openProject(project_directory,newSession = TRUE)
+  }
+  
+  if (isTRUE(git)) {
+    message('Initialising git')
+    git2r::init(project_directory)
+    writeLines('.Rproj.user',con = str_c(project_directory,'/.gitignore'))
+    add(project_directory,'*',force = TRUE)
+    commit(project_directory,all = TRUE,message = 'Initial commit')
   }
   
   message(glue('Template output complete. See {project_directory}/README.md for details on how to get started.'))
