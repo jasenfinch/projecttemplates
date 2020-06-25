@@ -6,7 +6,7 @@
 #' @param start TRUE/FALSE should the project be automatically activated
 #' @importFrom stringr str_c str_replace_all
 #' @importFrom magrittr %>%
-#' @importFrom rstudioapi isAvailable initializeProject
+#' @importFrom rstudioapi isAvailable initializeProject openProject
 #' @importFrom renv init
 #' @importFrom callr r
 #' @examples 
@@ -38,6 +38,9 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   
   dir.create(project_directory)
   
+  project_directory <- project_directory %>%
+    normalizePath()
+  
   if (isAvailable()) {
     initializeProject(project_directory)
   }
@@ -58,9 +61,14 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   output(project_name,project_directory,type)
   
   message('Initialising renv cache')
-  invisible(r(function(project_directory,start){
+  invisible(r(function(project_directory){
     renv::init(project = project_directory)
   },
-    args = list(project_directory = project_directory,
-                start = start)))
+  args = list(project_directory = project_directory)))
+  
+  if (isTRUE(start) & isAvailable()) {
+    message('Opening project in a new RStudio session')
+    openProject(project_directory,newSession = TRUE)
+  }
+  
 }
