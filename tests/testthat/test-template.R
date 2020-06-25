@@ -3,7 +3,7 @@ context('template')
 
 test_that('report template works',{
   
-  # skip_on_ci()
+  skip_on_ci()
   
   temp_path <- tempdir()
   
@@ -16,7 +16,7 @@ test_that('report template works',{
 
 test_that('presentation template works',{
   
-  # skip_on_ci()
+  skip_on_ci()
   
   temp_path <- tempdir()
   
@@ -29,7 +29,7 @@ test_that('presentation template works',{
 
 test_that('manuscript template works',{
   
-  # skip_on_ci()
+  skip_on_ci()
   
   if (!('wordcountaddin' %in% rownames(installed.packages()))){
     devtools::install_github('benmarwick/wordcountaddin')
