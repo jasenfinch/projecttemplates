@@ -47,7 +47,7 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   
   readme(project_name,project_directory,type)
   
-  drakeInfrastructure(project_directory)
+  drakeInfrastructure(project_directory,type)
   
   output(project_name,project_directory,type)
   

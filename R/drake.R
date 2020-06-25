@@ -1,5 +1,5 @@
 
-drakeInfrastructure <- function(project_directory){
+drakeInfrastructure <- function(project_directory,type){
   message('Adding drake infrastructure')
   
   template_directory <- system.file('templates',package = 'projecttemplates')
