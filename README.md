@@ -27,5 +27,5 @@ projecttemplates::template('A project title',path = '.',type = 'report',start = 
 
 To add in the future:
 
-* git and GitHub support
 * docker support
+* Github Actions support

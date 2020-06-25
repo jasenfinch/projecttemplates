@@ -4,20 +4,21 @@
 #' @param path target file path for project directory 
 #' @param type project type
 #' @param git TRUE/FALSE. Initialise a Git repository?
+#' @param github TRUE/FALSE. Create a GitHub repository?
+#' @param private TRUE/FALSE. Should the GitHub repository be private. Ignored if argument \code{github} is FALSE.
 #' @param start TRUE/FALSE. Should the project be automatically activated?
 #' @importFrom stringr str_c str_replace_all
 #' @importFrom magrittr %>%
 #' @importFrom rstudioapi isAvailable initializeProject openProject
 #' @importFrom renv init
 #' @importFrom callr r
-#' @importFrom git2r init add commit
 #' @examples 
 #' \dontrun{
 #' template('A new project',type = 'report',start = FALSE)
 #' }
 #' @export
 
-template <- function(project_name, path = '.', type = c('report','manuscript','presentation'), git = TRUE, start = TRUE){
+template <- function(project_name, path = '.', type = c('report','manuscript','presentation'), git = TRUE, github = TRUE, private = TRUE, start = TRUE){
   
   if (missing(type)) {
     type <- 'report'
@@ -65,19 +66,21 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   },
   args = list(project_directory = project_directory)))
   
+  if (isTRUE(git)) {
+    message('Initialising git')
+   createGit(project_directory)
+  }
+  
+  if (isTRUE(github)) {
+    message('Creating GitHub repository')
+   createGithub(project_name,path,private)
+  }
+  
+  message(glue('Template output complete. See {project_directory}/README.md for details on how to get started.'))
+  
   if (isTRUE(start) & isAvailable()) {
     message('Opening project in a new RStudio session')
     openProject(project_directory,newSession = TRUE)
   }
-  
-  if (isTRUE(git)) {
-    message('Initialising git')
-    git2r::init(project_directory)
-    writeLines('.Rproj.user',con = str_c(project_directory,'/.gitignore'))
-    add(project_directory,'*',force = TRUE)
-    commit(project_directory,all = TRUE,message = 'Initial commit')
-  }
-  
-  message(glue('Template output complete. See {project_directory}/README.md for details on how to get started.'))
   
 }
