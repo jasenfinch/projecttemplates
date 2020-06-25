@@ -51,6 +51,8 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   
   output(project_name,project_directory,type)
   
+  renvInitialise(project_directory)
+  
   if (isTRUE(git)) {
    createGit(project_directory)
   }
