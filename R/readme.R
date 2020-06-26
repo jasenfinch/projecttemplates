@@ -5,7 +5,7 @@ readme <- function(project_name,project_directory,type){
   header <- glue('# {project_name}
 
 This project is powered the [drake](https://docs.ropensci.org/drake/) package for workflow management and
-[renv](https://rstudio.github.io/renv/index.html)) package for `R` environment reproducibility.
+[renv](https://rstudio.github.io/renv/index.html) package for `R` environment reproducibility.
 
 ## Getting started
 
