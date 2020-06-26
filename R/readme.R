@@ -9,7 +9,7 @@ This project is powered the [drake](https://docs.ropensci.org/drake/) package fo
 
 ## Getting started
 
-Add analysis code to `R/plan.R`, data files to `data`, additional miscellaneous scripts to `misc` and communicate your results in `{type}/{type}.Rmd`.
+Add analysis code to `R/plan.R`, scripts containing functions to `R/functions`, data files to `data`, additional miscellaneous scripts to `misc` and communicate your results in `{type}/{type}.Rmd`.
 To run the analysis, execute `drake::r_make()` in an `R` session loaded from within the project directory.
 ')
   
