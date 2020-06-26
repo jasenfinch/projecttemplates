@@ -31,7 +31,7 @@ ENTRYPOINT ["Rscript","-e","renv::activate(); renv::hydrate(); drake::r_make()"]
 ## Docker
 
 This project supports the use of [docker](https://www.docker.com/) containers for reproducible project compilation.
-With docker installed, run the following from a terminal within the project directory to build the image:
+With docker installed, run the following from a terminal, within the project directory, to build the image.
 
 ``` sh
 docker build . -t {project_name_directory}
