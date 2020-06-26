@@ -8,9 +8,11 @@ template(
   project_name,
   path = ".",
   type = c("report", "manuscript", "presentation"),
+  docker = TRUE,
   git = TRUE,
   github = TRUE,
   private = TRUE,
+  github_actions = TRUE,
   start = TRUE
 )
 }
@@ -21,13 +23,17 @@ template(
 
 \item{type}{project type}
 
+\item{docker}{TRUE/FALSE. Create project infrastructure for building a docker container to compile the project.}
+
 \item{git}{TRUE/FALSE. Initialise a Git repository?}
 
-\item{github}{TRUE/FALSE. Create a GitHub repository?}
+\item{github}{TRUE/FALSE. Create a GitHub repository? Ignored if argument \code{git} is FALSE.}
 
-\item{private}{TRUE/FALSE. Should the GitHub repository be private. Ignored if argument \code{github} is FALSE.}
+\item{private}{TRUE/FALSE. Should the GitHub repository be private? Evaluated only if arguments \code{git} and \code{github} are TRUE.}
 
-\item{start}{TRUE/FALSE. Should the project be automatically activated?}
+\item{github_actions}{TRUE/FALSE. Add Github actions infrastructure? Evaluated only if arguments \code{git}, \code{github} and \code{docker} are TRUE.}
+
+\item{start}{TRUE/FALSE. Should the project be automatically activated in a new RStudio session?}
 }
 \description{
 Generate a project template directory.

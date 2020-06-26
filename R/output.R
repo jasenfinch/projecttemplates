@@ -136,7 +136,7 @@ header-includes:
   - \\usepackage{tabu}
   - \\usepackage{threeparttable}
   - \\usepackage{threeparttablex}
-  - \\usepackagenormalem]{ulem}
+  - \\usepackage[normalem]{ulem}
   - \\usepackage{makecell}
   - \\usepackage{xcolor}
 ---

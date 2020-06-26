@@ -3,10 +3,12 @@
 #' @param project_name project name/title
 #' @param path target file path for project directory 
 #' @param type project type
+#' @param docker TRUE/FALSE. Create project infrastructure for building a docker container to compile the project.
 #' @param git TRUE/FALSE. Initialise a Git repository?
-#' @param github TRUE/FALSE. Create a GitHub repository?
-#' @param private TRUE/FALSE. Should the GitHub repository be private. Ignored if argument \code{github} is FALSE.
-#' @param start TRUE/FALSE. Should the project be automatically activated?
+#' @param github TRUE/FALSE. Create a GitHub repository? Ignored if argument \code{git} is FALSE.
+#' @param private TRUE/FALSE. Should the GitHub repository be private? Evaluated only if arguments \code{git} and \code{github} are TRUE.
+#' @param github_actions TRUE/FALSE. Add Github actions infrastructure? Evaluated only if arguments \code{git}, \code{github} and \code{docker} are TRUE.
+#' @param start TRUE/FALSE. Should the project be automatically activated in a new RStudio session?
 #' @importFrom stringr str_c str_replace_all
 #' @importFrom magrittr %>%
 #' @importFrom rstudioapi isAvailable initializeProject openProject
@@ -16,7 +18,7 @@
 #' }
 #' @export
 
-template <- function(project_name, path = '.', type = c('report','manuscript','presentation'), git = TRUE, github = TRUE, private = TRUE, start = TRUE){
+template <- function(project_name, path = '.', type = c('report','manuscript','presentation'), docker = TRUE, git = TRUE, github = TRUE, private = TRUE, github_actions = TRUE, start = TRUE){
   
   if (missing(type)) {
     type <- 'report'
@@ -53,12 +55,18 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   
   renvInitialise(project_directory)
   
+  docker(project_name,path)
+  
+  if (all(git,github,docker,github_actions)){
+    githubActions(project_name,path)
+  }
+  
   if (isTRUE(git)) {
    createGit(project_directory)
   }
   
-  if (isTRUE(github)) {
-   createGithub(project_name,path,private)
+  if (all(git,github)) {
+    createGithub(project_name,path,private)
   }
   
   message(glue('Template output complete. See {project_directory}/README.md for details on how to get started.'))

@@ -22,10 +22,3 @@ The following will generate a template report project in the current working dir
 ```
 projecttemplates::template('A project title',path = '.',type = 'report',start = FALSE)
 ```
-
-### Wishlist
-
-To add in the future:
-
-* docker support
-* Github Actions support
