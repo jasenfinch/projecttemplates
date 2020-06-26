@@ -14,6 +14,12 @@ FROM rocker/verse:4.0.0
 
 ARG DEBIAN_FRONTEND=noninteractive
 
+RUN apt-get update
+
+RUN apt-get install -y apt-utils texlive-base
+
+RUN apt-get install -y texlive
+
 RUN Rscript -e "install.packages(c(\'renv\'), repos = c(CRAN = \'https://cloud.r-project.org\'))"
 
 WORKDIR /home/rstudio/{project_name_directory}
@@ -34,13 +40,13 @@ This project supports the use of [docker](https://www.docker.com/) containers fo
 With docker installed, run the following from a terminal, within the project directory, to build the image.
 
 ``` sh
-docker build . -t {project_name_directory}
+docker build . -t {str_to_lower(project_name_directory)}
 ````
 
 The project can then be compiled using:
 
 ``` sh
-docker run -v $(pwd):/home/rstudio/{project_name_directory} {project_name_directory}
+docker run -v $(pwd):/home/rstudio/{project_name_directory} {str_to_lower(project_name_directory)}
 ```
        ") %>%
     write(file = str_c(project_directory,'/README.md'),append = TRUE)

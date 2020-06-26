@@ -24,6 +24,12 @@ packages <- function(project_directory,type){
     c(.,custom_packs_gh[[type]]) %>%
     str_c(collapse = ',')
   
+  if (type != 'manuscript'){
+    packs_gh <- glue('#pacman::p_load_gh(install = FALSE)')
+  } else {
+    packs_gh <- glue('pacman::p_load_gh({packs_gh},install = FALSE)')
+  }
+  
   script <- glue('
 ## Restore package cache
 renv::restore()
@@ -32,7 +38,7 @@ renv::restore()
 pacman::p_load({packs_cran},install = FALSE)
 
 ## Load dependant GitHub libraries
-pacman::p_load_gh({packs_gh},install = FALSE)
+{packs_gh}
 
 ## Resolve conflicts
 # conflict_prefer(quiet = T)
