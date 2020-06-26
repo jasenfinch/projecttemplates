@@ -44,13 +44,13 @@ jobs:
        
       - name: Build image
         run: | 
-            docker build . --file Dockerfile  -t {project_name_directory}
+            docker build . --file Dockerfile  -t {str_to_lower(project_name_directory)}
        
       - name: Run test
         env:
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          docker run -e GITHUB_PAT -v $(pwd):/home/rstudio/{project_name_directory} {project_name_directory}
+          docker run -e GITHUB_PAT -v $(pwd):/home/rstudio/{project_name_directory} {str_to_lower(project_name_directory)}
        
        
   # Push image to GitHub Packages.
@@ -95,7 +95,7 @@ Alternatively, the project can be compiled with a pre-built docker image directl
 Run:
 
 ``` sh
-docker run -v $(pwd):/home/rstudio/{project_name_directory} docker.pkg.github.com/jasenfinch/{str_to_lower(project_name_directory)}/{project_name_directory}:latest
+docker run -v $(pwd):/home/rstudio/{project_name_directory} docker.pkg.github.com/jasenfinch/{str_to_lower(project_name_directory)}/{str_to_lower(project_name_directory)}:latest
 ```
        ") %>%
     write(file = str_c(project_directory,'/README.md'),append = TRUE)
