@@ -49,7 +49,7 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   
   dir.create(str_c(project_directory,'data',sep = '/'))
   
-  dir.create(str_c(project_directory,'inst',sep = '/'))
+  dir.create(str_c(project_directory,'misc',sep = '/'))
   
   readme(project_name,project_directory,type)
   
