@@ -47,6 +47,10 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   
   dir.create(str_c(project_directory,'R','functions',sep = '/'),recursive = TRUE)
   
+  dir.create(str_c(project_directory,'data',sep = '/'))
+  
+  dir.create(str_c(project_directory,'inst',sep = '/'))
+  
   readme(project_name,project_directory,type)
   
   drakeInfrastructure(project_directory,type)
