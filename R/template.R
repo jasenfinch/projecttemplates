@@ -66,7 +66,7 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   }
   
   if (isTRUE(git)) {
-   createGit(project_directory)
+   createGit(project_directory,type)
   }
   
   if (all(git,github)) {
