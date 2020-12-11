@@ -3,7 +3,7 @@
 createGit <- function(project_directory,type){
   message('Initialising git')
   
-  ignore <- c('.Rproj.user','.drake')
+  ignore <- c('.Rhistory','.Rproj.user','.drake')
   
   if (type %in% c('report','presentation')){
     ignore <- c(ignore,'*.html')  
