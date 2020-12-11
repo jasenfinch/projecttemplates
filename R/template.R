@@ -3,6 +3,7 @@
 #' @param project_name project name/title
 #' @param path target file path for project directory 
 #' @param type project type
+#' @param rebuild force rebuild of packages installed into project renv cache
 #' @param docker TRUE/FALSE. Create project infrastructure for building a docker container to compile the project.
 #' @param git TRUE/FALSE. Initialise a Git repository?
 #' @param github TRUE/FALSE. Create a GitHub repository? Ignored if argument \code{git} is FALSE.
@@ -18,7 +19,16 @@
 #' }
 #' @export
 
-template <- function(project_name, path = '.', type = c('report','manuscript','presentation'), docker = TRUE, git = TRUE, github = TRUE, private = TRUE, github_actions = TRUE, start = TRUE){
+template <- function(project_name, 
+                     path = '.', 
+                     type = c('report','manuscript','presentation'), 
+                     rebuild = FALSE,
+                     docker = TRUE, 
+                     git = TRUE, 
+                     github = TRUE, 
+                     private = TRUE, 
+                     github_actions = TRUE, 
+                     start = TRUE){
   
   if (missing(type)) {
     type <- 'report'
@@ -57,7 +67,7 @@ template <- function(project_name, path = '.', type = c('report','manuscript','p
   
   output(project_name,project_directory,type)
   
-  renvInitialise(project_directory)
+  renvInitialise(project_directory,rebuild = rebuild)
   
   docker(project_name,path)
   
