@@ -8,6 +8,7 @@ template(
   project_name,
   path = ".",
   type = c("report", "manuscript", "presentation"),
+  rebuild = FALSE,
   docker = TRUE,
   git = TRUE,
   github = TRUE,
@@ -22,6 +23,8 @@ template(
 \item{path}{target file path for project directory}
 
 \item{type}{project type}
+
+\item{rebuild}{force rebuild of packages installed into project renv cache}
 
 \item{docker}{TRUE/FALSE. Create project infrastructure for building a docker container to compile the project.}
 
