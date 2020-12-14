@@ -19,6 +19,7 @@ createGithub <- function(project_name,path,private){
     .token = gh_token()
   )
   
+  git_remote_add(url = create$ssh_url,repo = project_directory)
   git_push('origin',refspec ='refs/heads/master' ,repo = project_directory)
   
   message(glue('Project repository created at {create$html_url}.'))
