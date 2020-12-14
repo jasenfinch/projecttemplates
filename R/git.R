@@ -1,4 +1,4 @@
-#' @importFrom git2r init add commit 
+#' @importFrom gert git_init git_add git_commit
 
 createGit <- function(project_directory,type){
   message('Initialising git')
@@ -13,9 +13,9 @@ createGit <- function(project_directory,type){
     ignore <- c(ignore,'*.pdf')
   }
   
-  init(project_directory)
+  git_init(project_directory)
   writeLines(ignore,con = str_c(project_directory,'/.gitignore'))
-  add(project_directory,'.*')
-  add(project_directory,'*')
-  commit(project_directory,all = TRUE,message = 'Initial commit')
+  git_add('.*',repo = project_directory)
+  git_add('*',repo = project_directory)
+  git_commit('Initial commit',repo = project_directory)
 }

@@ -20,9 +20,9 @@ Imports: glue,
   rstudioapi,
   stringr,
   callr,
-  git2r,
   usethis,
-  gh
+  gh,
+  gert
 Suggests: 
     testthat,
     covr,
