@@ -1,3 +1,7 @@
+# projecttemplates 0.3.5
+
+* Re-added the addition of the remote URL during GitHub repo setup.
+
 # projecttemplates 0.3.4
 
 * Removed use of the now defunct `usethis::git_credentials()` and `usethis::github_token`.
