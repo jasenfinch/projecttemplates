@@ -1,4 +1,3 @@
-#' @importFrom usethis git_credentials
 #' @importFrom gh gh gh_token
 #' @importFrom gert git_push git_remote_add
 
