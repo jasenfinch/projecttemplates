@@ -1,6 +1,6 @@
 #' Add GitHub actions infrastructure
 #' @description Add GitHub actions infrastructure to a project directory.
-#' #' @param project_name project name/title
+#' @param project_name project name/title
 #' @param path target file path for project directory
 #' @examples 
 #' projectSkeleton('test project',path = tempdir(),type = 'report')

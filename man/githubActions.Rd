@@ -7,11 +7,12 @@
 githubActions(project_name, path)
 }
 \arguments{
+\item{project_name}{project name/title}
+
 \item{path}{target file path for project directory}
 }
 \description{
 Add GitHub actions infrastructure to a project directory.
-#' @param project_name project name/title
 }
 \examples{
 projectSkeleton('test project',path = tempdir(),type = 'report')
