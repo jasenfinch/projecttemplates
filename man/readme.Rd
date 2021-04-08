@@ -4,14 +4,14 @@
 \alias{readme}
 \title{Project README}
 \usage{
-readme(project_name, path, type)
+readme(project_name, path, type = projectTypes())
 }
 \arguments{
 \item{project_name}{project name/title}
 
 \item{path}{target file path for project directory}
 
-\item{type}{project type}
+\item{type}{project type. Should be one returned by \code{projectTypes()}.}
 }
 \description{
 Export a README to a project directory

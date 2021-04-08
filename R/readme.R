@@ -2,12 +2,12 @@
 #' @description Export a README to a project directory
 #' @param project_name project name/title
 #' @param path target file path for project directory 
-#' @param type project type
+#' @param type project type. Should be one returned by \code{projectTypes()}.
 #' @examples 
 #' readme('test project',getwd(),'report')
 #' @export
 
-readme <- function(project_name,path,type){
+readme <- function(project_name,path,type = projectTypes()){
   
   project_directory <- projectDirectory(project_name,path)
   
