@@ -18,5 +18,5 @@ Add project communication outputs to a project directory.
 }
 \examples{
 projectSkeleton('test project',path = tempdir(),type = 'report')
-targets(paste0(tempdir(),'/test_project'),type = 'report') 
+output('test project',paste0(tempdir(),'/test_project'),type = 'report') 
 }
