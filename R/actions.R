@@ -1,5 +1,13 @@
+#' Add GitHub actions infrastructure
+#' @description Add GitHub actions infrastructure to a project directory.
+#' #' @param project_name project name/title
+#' @param path target file path for project directory
+#' @examples 
+#' projectSkeleton('test project',path = tempdir(),type = 'report')
+#' githubActions('test project',path = tempdir())
 #' @importFrom stringr str_to_lower
 #' @importFrom gh gh_whoami
+#' @export
 
 githubActions <- function(project_name,path){
   message('Adding Github Actions workflow')
