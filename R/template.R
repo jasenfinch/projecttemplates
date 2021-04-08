@@ -40,7 +40,7 @@ template <- function(project_name,
   
   readme(project_name,path,type)
   
-  targetsInfrastructure(project_directory,type)
+  targets(project_directory,type)
   
   output(project_name,project_directory,type)
   

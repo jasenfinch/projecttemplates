@@ -1,3 +1,11 @@
+#' Add package utilities
+#' @description Add package utilites to a project directory.
+#' @param project_directory the project directory file path
+#' @param type project type. Should be one returned by \code{projectTypes()}.
+#' @examples
+#' projectSkeleton('test project',path = tempdir(),type = 'report')
+#' utils(paste0(tempdir(),'/test_project'),type = 'report') 
+#' @export
 
 utils <- function(project_directory,type){
   
