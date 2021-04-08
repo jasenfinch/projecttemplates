@@ -46,7 +46,9 @@ template <- function(project_name,
   
   renvInitialise(project_directory,rebuild = rebuild)
   
-  docker(project_name,path)
+  if(isTRUE(docker)){
+    docker(project_name,path) 
+  }
   
   if (all(git,github,docker,github_actions)){
     githubActions(project_name,path)
