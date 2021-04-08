@@ -1,7 +1,23 @@
+#' Add project outputs
+#' @description Add project communication outputs to a project directory.
+#' @param project_name project name/title
+#' @param project_directory the project directory file path
+#' @param type project type. Should be one returned by \code{projectTypes()}.
+#' @examples
+#' projectSkeleton('test project',path = tempdir(),type = 'report')
+#' output('test project',paste0(tempdir(),'/test_project'),type = 'report') 
 #' @importFrom lubridate month year
 #' @importFrom utils installed.packages
+#' @export
 
-output <-  function(project_name,project_directory,type){
+output <-  function(project_name,project_directory,type = projectTypes()){
+  
+  
+  if (missing(type)) {
+    type <- 'report'
+  }
+  
+  type <- match.arg(type)
   
   message('Adding output templates')
   
