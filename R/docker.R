@@ -1,3 +1,11 @@
+#' Add docker infrastructure
+#' @description Add docker infrastructure to a project directory.
+#' @param project_name project name/title
+#' @param path target file path for project directory
+#' @examples 
+#' projectSkeleton('test project',path = tempdir(),type = 'report')
+#' docker('test project',path = tempdir())
+#' @export
 
 docker <- function(project_name,path){
   message('Adding Docker infrastructure')
@@ -5,9 +13,8 @@ docker <- function(project_name,path){
   project_name_directory <- project_name %>%
     str_replace_all(' ','_')
   
-  project_directory <- path %>%
-    path.expand() %>%
-    str_c(project_name_directory,sep = '/')
+  project_directory <- projectDirectory(project_name,
+                                        path)
   
   glue('
 FROM rocker/verse:4.0.0
@@ -28,7 +35,7 @@ COPY renv.lock renv.lock
 
 RUN Rscript -e "renv::consent(provided = TRUE); renv::restore(prompt = FALSE)"
 
-ENTRYPOINT ["Rscript","-e","renv::activate(); renv::hydrate(); drake::r_make()"]
+ENTRYPOINT ["Rscript","-e","renv::activate(); renv::hydrate(); targets::tar_make()"]
        ') %>%
     writeLines(con = str_c(project_directory,'/Dockerfile'))
   
