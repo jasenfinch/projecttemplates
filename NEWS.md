@@ -1,3 +1,13 @@
+# projecttemplates 0.4.0
+
+* `docker` argument in `projecttemplates::template` now works correctly.
+
+* The project templates now use the [`targets`](https://docs.ropensci.org/targets/) package for workflow management.
+
+* Intermediate helper functions are now exported.
+
+* Added a `pkgdown` site available [here](https://jasenfinch.github.io/projecttemplates/).
+
 # projecttemplates 0.3.5
 
 * Re-added the addition of the remote URL during GitHub repo setup.
