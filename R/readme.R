@@ -4,7 +4,9 @@
 #' @param path target file path for project directory 
 #' @param type project type. Should be one returned by \code{projectTypes()}.
 #' @examples 
+#' \dontrun{
 #' readme('test project',getwd(),'report')
+#' }
 #' @export
 
 readme <- function(project_name,path,type = projectTypes()){

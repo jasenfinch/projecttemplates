@@ -3,8 +3,10 @@
 #' @param project_directory the project directory file path
 #' @param type project type. Should be one returned by \code{projectTypes()}.
 #' @examples
-#' projectSkeleton('test project',path = tempdir(),type = 'report')
-#' utils(paste0(tempdir(),'/test_project'),type = 'report') 
+#' \dontrun{
+#' projectSkeleton(paste0(tempdir(),'/test_project'))
+#' utils(paste0(tempdir(),'/test_project'),type = 'report')
+#' }
 #' @export
 
 utils <- function(project_directory,type){

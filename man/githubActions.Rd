@@ -15,6 +15,8 @@ githubActions(project_name, path)
 Add GitHub actions infrastructure to a project directory.
 }
 \examples{
-projectSkeleton('test project',path = tempdir(),type = 'report')
+\dontrun{
+projectSkeleton(paste0(tempdir(),'/test_project'))
 githubActions('test project',path = tempdir())
+}
 }

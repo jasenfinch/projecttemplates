@@ -3,8 +3,10 @@
 #' @param project_name project name/title
 #' @param path target file path for project directory
 #' @examples 
-#' projectSkeleton('test project',path = tempdir(),type = 'report')
+#' \dontrun{
+#' projectSkeleton(paste0(tempdir(),'/test_project'))
 #' githubActions('test project',path = tempdir())
+#' }
 #' @importFrom stringr str_to_lower
 #' @importFrom gh gh_whoami
 #' @export

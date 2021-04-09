@@ -3,8 +3,10 @@
 #' @param project_directory the project directory file path
 #' @param type project type. Should be one returned by \code{projectTypes()}.
 #' @examples
-#' projectSkeleton('test project',path = tempdir(),type = 'report')
+#' \dontrun{
+#' projectSkeleton(paste0(tempdir(),'/test_project'))
 #' targets(paste0(tempdir(),'/test_project'),type = 'report') 
+#' }
 #' @export
 
 targets <- function(project_directory,type = projectTypes()){
@@ -39,8 +41,11 @@ targetsScript <- function(project_directory,type = projectTypes()){
 #' @param project_directory the project directory file path
 #' @param type project type. Should be one returned by \code{projectTypes()}.
 #' @examples
-#' projectSkeleton('test project',path = tempdir(),type = 'report')
-#' targetsPipeline(paste0(tempdir(),'/test_project'),type = 'report') 
+#' \dontrun{
+#' projectSkeleton(paste0(tempdir(),'/test_project'))
+#' targetsPipeline(paste0(tempdir(),'/test_project'),type = 'report')
+#' }
+#' @importFrom glue glue
 #' @export
 
 targetsPipeline <- function(project_directory,type = projectTypes()){

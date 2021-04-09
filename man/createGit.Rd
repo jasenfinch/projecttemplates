@@ -15,6 +15,8 @@ createGit(project_directory, type)
 Add git infrastructure to a project directory.
 }
 \examples{
-projectSkeleton('test project',path = tempdir(),type = 'report')
-createGit(paste0(tempdir(),'/test_project'),type = 'report') 
+\dontrun{
+projectSkeleton(paste0(tempdir(),'/test_project'))
+createGit(paste0(tempdir(),'/test_project'),type = 'report')
+}
 }

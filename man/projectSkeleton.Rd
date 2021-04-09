@@ -13,5 +13,7 @@ projectSkeleton(project_directory)
 Initialise the basic project directories and files.
 }
 \examples{
-projectSkeleton(paste0(getwd(),'/test_project'))
+\dontrun{
+projectSkeleton(paste0(tempdir(),'/test_project'))
+}
 }

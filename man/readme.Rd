@@ -17,5 +17,7 @@ readme(project_name, path, type = projectTypes())
 Export a README to a project directory
 }
 \examples{
+\dontrun{
 readme('test project',getwd(),'report')
+}
 }

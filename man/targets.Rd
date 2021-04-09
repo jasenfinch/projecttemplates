@@ -15,6 +15,8 @@ targets(project_directory, type = projectTypes())
 Add targets infrastructure to a project directory
 }
 \examples{
-projectSkeleton('test project',path = tempdir(),type = 'report')
+\dontrun{
+projectSkeleton(paste0(tempdir(),'/test_project'))
 targets(paste0(tempdir(),'/test_project'),type = 'report') 
+}
 }

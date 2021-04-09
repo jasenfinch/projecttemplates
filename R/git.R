@@ -3,8 +3,10 @@
 #' @param project_directory the project directory file path
 #' @param type project type. Should be one returned by \code{projectTypes()}.
 #' @examples
-#' projectSkeleton('test project',path = tempdir(),type = 'report')
-#' createGit(paste0(tempdir(),'/test_project'),type = 'report') 
+#' \dontrun{
+#' projectSkeleton(paste0(tempdir(),'/test_project'))
+#' createGit(paste0(tempdir(),'/test_project'),type = 'report')
+#' }
 #' @importFrom gert git_init git_add git_commit
 #' @export
 

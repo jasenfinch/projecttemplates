@@ -15,6 +15,8 @@ utils(project_directory, type)
 Add package utilites to a project directory.
 }
 \examples{
-projectSkeleton('test project',path = tempdir(),type = 'report')
-utils(paste0(tempdir(),'/test_project'),type = 'report') 
+\dontrun{
+projectSkeleton(paste0(tempdir(),'/test_project'))
+utils(paste0(tempdir(),'/test_project'),type = 'report')
+}
 }

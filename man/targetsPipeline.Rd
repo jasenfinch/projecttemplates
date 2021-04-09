@@ -15,6 +15,8 @@ targetsPipeline(project_directory, type = projectTypes())
 Add a targets pipeline to a project directory.
 }
 \examples{
-projectSkeleton('test project',path = tempdir(),type = 'report')
-targetsPipeline(paste0(tempdir(),'/test_project'),type = 'report') 
+\dontrun{
+projectSkeleton(paste0(tempdir(),'/test_project'))
+targetsPipeline(paste0(tempdir(),'/test_project'),type = 'report')
+}
 }

@@ -23,7 +23,9 @@ projectDirectory <- function(project_name,path){
 #' @description Initialise the basic project directories and files.
 #' @param project_directory the project directory file path
 #' @examples 
-#' projectSkeleton(paste0(getwd(),'/test_project'))
+#' \dontrun{
+#' projectSkeleton(paste0(tempdir(),'/test_project'))
+#' }
 #' @importFrom rstudioapi isAvailable initializeProject
 #' @export
 
