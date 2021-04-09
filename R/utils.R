@@ -15,7 +15,8 @@ utils <- function(project_directory,type){
              'tarchetypes',
              'conflicted',
              'magrittr',
-             'purrr')
+             'purrr',
+             'knitr')
   
   custom_packs_cran <- list(
     report = character(),

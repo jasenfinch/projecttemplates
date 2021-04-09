@@ -75,7 +75,7 @@ targetsPipeline <- function(project_directory,type = projectTypes()){
     cmd <- str_c('
   ## render tables
   tar_render(tables,
-             "manuscript/tables.Rmd"),
+             "manuscript/tables.Rmd",
              quiet = TRUE),
   
   ## render figures
@@ -96,5 +96,6 @@ targetsPipeline <- function(project_directory,type = projectTypes()){
   {cmd}
   )
   ') %>%
-    writeLines(con = str_c(project_directory,'/R/targets.R'))
+    write(file = str_c(project_directory,'/_targets.R'),
+          append = TRUE)
 }

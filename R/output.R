@@ -118,7 +118,7 @@ opts_chunk$set(echo = FALSE,
 # Acknowlegements
 
 ```{{r check,comment="",cache=FALSE}}
-manuscriptCheck(checks = c("word count"))
+manuscriptCheck("manuscript/manuscript.Rmd",checks = c("word count"))
 ```
 
 # References
