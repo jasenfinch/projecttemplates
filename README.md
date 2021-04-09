@@ -4,7 +4,7 @@
  [![Codecov test coverage](https://codecov.io/gh/jasenfinch/projecttemplates/branch/master/graph/badge.svg)](https://codecov.io/gh/jasenfinch/projecttemplates?branch=master)
  [![license](https://img.shields.io/badge/license-GNU%20GPL%20v3.0-blue.svg)](https://github.com/jasenfinch/projecttemplates/blob/master/DESCRIPTION) 
 
-Quick and simple generation of [drake](https://docs.ropensci.org/drake/)  and [renv](https://rstudio.github.io/renv/index.html) powered project templates for reproducible research and analyses.
+Quick and simple generation of [targets](https://docs.ropensci.org/targets/)  and [renv](https://rstudio.github.io/renv/index.html) powered project templates for reproducible research and analyses.
 
 ### Installation
 
