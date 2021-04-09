@@ -2,7 +2,7 @@
 % Please edit documentation in R/template.R
 \name{template}
 \alias{template}
-\title{project templates}
+\title{Project templates}
 \usage{
 template(
   project_name,

@@ -1,4 +1,4 @@
-#' project templates
+#' Project templates
 #' @description Generate a project template directory.
 #' @param project_name project name/title
 #' @param path target file path for project directory 
