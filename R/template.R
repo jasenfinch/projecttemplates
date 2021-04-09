@@ -1,8 +1,8 @@
-#' project templates
+#' Project templates
 #' @description Generate a project template directory.
 #' @param project_name project name/title
 #' @param path target file path for project directory 
-#' @param type project type
+#' @param type project type. Should be one returned by \code{projectTypes()}.
 #' @param rebuild force rebuild of packages installed into project renv cache
 #' @param docker TRUE/FALSE. Create project infrastructure for building a docker container to compile the project.
 #' @param git TRUE/FALSE. Initialise a Git repository?
@@ -10,9 +10,7 @@
 #' @param private TRUE/FALSE. Should the GitHub repository be private? Evaluated only if arguments \code{git} and \code{github} are TRUE.
 #' @param github_actions TRUE/FALSE. Add Github actions infrastructure? Evaluated only if arguments \code{git}, \code{github} and \code{docker} are TRUE.
 #' @param start TRUE/FALSE. Should the project be automatically activated in a new RStudio session?
-#' @importFrom stringr str_c str_replace_all
-#' @importFrom magrittr %>%
-#' @importFrom rstudioapi isAvailable initializeProject openProject
+#' @importFrom rstudioapi openProject
 #' @examples 
 #' \dontrun{
 #' template('A new project',type = 'report',start = FALSE)
@@ -21,7 +19,7 @@
 
 template <- function(project_name, 
                      path = '.', 
-                     type = c('report','manuscript','presentation'), 
+                     type = projectTypes(), 
                      rebuild = FALSE,
                      docker = TRUE, 
                      git = TRUE, 
@@ -36,40 +34,21 @@ template <- function(project_name,
   
   type <- match.arg(type)
   
-  project_name_directory <- project_name %>%
-    str_replace_all(' ','_')
+  project_directory <- projectDirectory(project_name,path)
   
-  project_directory <- path %>%
-    path.expand() %>%
-    str_c(project_name_directory,sep = '/')
+  projectSkeleton(project_directory)
   
-  if (dir.exists(project_directory)) {
-    stop('Project directory already exists',call. = FALSE)
-  }
+  readme(project_name,path,type)
   
-  message(str_c('Creating project directory at ',project_directory))
-  
-  dir.create(project_directory)
-  
-  if (isAvailable()) {
-    initializeProject(project_directory)
-  }
-  
-  dir.create(str_c(project_directory,'R','functions',sep = '/'),recursive = TRUE)
-  
-  dir.create(str_c(project_directory,'data',sep = '/'))
-  
-  dir.create(str_c(project_directory,'misc',sep = '/'))
-  
-  readme(project_name,project_directory,type)
-  
-  drakeInfrastructure(project_directory,type)
+  targets(project_directory,type)
   
   output(project_name,project_directory,type)
   
   renvInitialise(project_directory,rebuild = rebuild)
   
-  docker(project_name,path)
+  if(isTRUE(docker)){
+    docker(project_name,path) 
+  }
   
   if (all(git,github,docker,github_actions)){
     githubActions(project_name,path)
@@ -90,4 +69,13 @@ template <- function(project_name,
     openProject(project_directory,newSession = TRUE)
   }
   
+}
+
+#' Available project types
+#' @description Available project types within the projecttemplates package
+#' @examples 
+#' projectTypes()
+#' @export
+projectTypes <- function(){
+  c('report','manuscript','presentation')
 }

@@ -1,7 +1,13 @@
+#' Create a project GitHub repository
+#' @description Create a GitHub repository for the project.
+#' @param project_name project name/title
+#' @param path target file path for project directory 
+#' @param private TRUE/FALSE. Should the GitHub repository be private? Evaluated only if arguments \code{git} and \code{github} are TRUE.
 #' @importFrom gh gh gh_token
 #' @importFrom gert git_push git_remote_add
+#' @export
 
-createGithub <- function(project_name,path,private){
+createGithub <- function(project_name,path,private = TRUE){
   message('Creating GitHub repository')
   
   project_name_directory <- project_name %>%

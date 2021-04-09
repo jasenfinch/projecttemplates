@@ -1,8 +1,22 @@
+#' Add package utilities
+#' @description Add package utilites to a project directory.
+#' @param project_directory the project directory file path
+#' @param type project type. Should be one returned by \code{projectTypes()}.
+#' @examples
+#' \dontrun{
+#' projectSkeleton(paste0(tempdir(),'/test_project'))
+#' utils(paste0(tempdir(),'/test_project'),type = 'report')
+#' }
+#' @export
 
-packages <- function(project_directory,type){
+utils <- function(project_directory,type){
   
-  packs <- c('drake','conflicted','rmarkdown',
-             'callr','magrittr','purrr','progress','knitr')
+  packs <- c('targets',
+             'tarchetypes',
+             'conflicted',
+             'magrittr',
+             'purrr',
+             'knitr')
   
   custom_packs_cran <- list(
     report = character(),
@@ -41,8 +55,8 @@ pacman::p_load({packs_cran},install = FALSE)
 {packs_gh}
 
 ## Resolve conflicts
-# conflict_prefer(quiet = T)
+# conflict_prefer(quiet = TRUE)
 
 ')
-  writeLines(script,str_c(project_directory,'/R/packages.R'))
+  writeLines(script,str_c(project_directory,'/R/utils.R'))
 }

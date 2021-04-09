@@ -2,12 +2,12 @@
 % Please edit documentation in R/template.R
 \name{template}
 \alias{template}
-\title{project templates}
+\title{Project templates}
 \usage{
 template(
   project_name,
   path = ".",
-  type = c("report", "manuscript", "presentation"),
+  type = projectTypes(),
   rebuild = FALSE,
   docker = TRUE,
   git = TRUE,
@@ -22,7 +22,7 @@ template(
 
 \item{path}{target file path for project directory}
 
-\item{type}{project type}
+\item{type}{project type. Should be one returned by \code{projectTypes()}.}
 
 \item{rebuild}{force rebuild of packages installed into project renv cache}
 
