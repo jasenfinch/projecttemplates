@@ -4,6 +4,8 @@
 
 * A `run.R` script now added to a project directory for executing a `targets` analysis through `projecttemplates::targetsRun()`.
 
+* Project creation can be forced using the `force` argument of `projecttemplate::template()`.
+
 # projecttemplates 0.4.0
 
 * `docker` argument in `projecttemplates::template()` now works correctly.

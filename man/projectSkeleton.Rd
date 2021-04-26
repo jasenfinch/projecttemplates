@@ -4,10 +4,12 @@
 \alias{projectSkeleton}
 \title{Project skeleton}
 \usage{
-projectSkeleton(project_directory)
+projectSkeleton(project_directory, force = FALSE)
 }
 \arguments{
 \item{project_directory}{the project directory file path}
+
+\item{force}{force project creation if project directory already exists}
 }
 \description{
 Initialise the basic project directories and files.

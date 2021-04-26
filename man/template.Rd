@@ -14,6 +14,7 @@ template(
   github = TRUE,
   private = TRUE,
   github_actions = TRUE,
+  force = FALSE,
   start = TRUE
 )
 }
@@ -35,6 +36,8 @@ template(
 \item{private}{TRUE/FALSE. Should the GitHub repository be private? Evaluated only if arguments \code{git} and \code{github} are TRUE.}
 
 \item{github_actions}{TRUE/FALSE. Add Github actions infrastructure? Evaluated only if arguments \code{git}, \code{github} and \code{docker} are TRUE.}
+
+\item{force}{force project creation if project directory already exists}
 
 \item{start}{TRUE/FALSE. Should the project be automatically activated in a new RStudio session?}
 }
