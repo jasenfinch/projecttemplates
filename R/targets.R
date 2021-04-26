@@ -114,6 +114,7 @@ targetsPipeline <- function(project_directory,type = projectTypes()){
 
 #' Add a targets run script to a project directory
 #' @description Add a run.R script to a project directory that can be used to trigger building a targets workflow.
+#' @param project_directory the project directory file path
 #' @examples 
 #' \dontrun{
 #' projectSkeleton(paste0(tempdir(),'/test_project'))

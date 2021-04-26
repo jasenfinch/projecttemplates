@@ -6,6 +6,9 @@
 \usage{
 targetsRun(project_directory)
 }
+\arguments{
+\item{project_directory}{the project directory file path}
+}
 \description{
 Add a run.R script to a project directory that can be used to trigger building a targets workflow.
 }
