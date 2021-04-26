@@ -21,7 +21,7 @@ This project is powered the [targets](https://docs.ropensci.org/targets/) packag
 ## Getting started
 
 Add analysis targets to `R/targets.R`, scripts containing functions to the `R/functions` directory, data files to the `data` directory, additional miscellaneous scripts to `misc` and communicate your results in `{type}/{type}.Rmd`.
-To run the analysis, execute `targets::tar_make()` in an `R` session loaded from within the project directory.
+To run the analysis, either execute `targets::tar_make()` in an `R` session loaded from within the project directory or run the `run.R` script.
 ')
   
   writeLines(header,str_c(project_directory,'/README.md'))

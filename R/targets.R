@@ -21,6 +21,7 @@ targets <- function(project_directory,type = projectTypes()){
   
   targetsScript(project_directory,type)
   targetsPipeline(project_directory,type)
+  targetsRun(project_directory)
   utils(project_directory,type)
 }
 
@@ -109,4 +110,21 @@ targetsPipeline <- function(project_directory,type = projectTypes()){
   ') %>%
     write(file = str_c(project_directory,'/_targets.R'),
           append = TRUE)
+}
+
+#' Add a targets run script to a project directory
+#' @description Add a run.R script to a project directory that can be used to trigger building a targets workflow.
+#' @examples 
+#' \dontrun{
+#' projectSkeleton(paste0(tempdir(),'/test_project'))
+#' targetsRun(paste0(tempdir(),'/test_project'))
+#' }
+#' @export
+
+targetsRun <- function(project_directory){
+  script <- '## Execute this script to run the project analysis
+targets::tar_make()
+  '
+  
+  writeLines(script,str_c(project_directory,'/run.R'))
 }
