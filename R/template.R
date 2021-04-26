@@ -9,6 +9,7 @@
 #' @param github TRUE/FALSE. Create a GitHub repository? Ignored if argument \code{git} is FALSE.
 #' @param private TRUE/FALSE. Should the GitHub repository be private? Evaluated only if arguments \code{git} and \code{github} are TRUE.
 #' @param github_actions TRUE/FALSE. Add Github actions infrastructure? Evaluated only if arguments \code{git}, \code{github} and \code{docker} are TRUE.
+#' @param force force project creation if project directory already exists
 #' @param start TRUE/FALSE. Should the project be automatically activated in a new RStudio session?
 #' @importFrom rstudioapi openProject
 #' @examples 
@@ -26,6 +27,7 @@ template <- function(project_name,
                      github = TRUE, 
                      private = TRUE, 
                      github_actions = TRUE, 
+                     force = FALSE,
                      start = TRUE){
   
   if (missing(type)) {
@@ -36,7 +38,7 @@ template <- function(project_name,
   
   project_directory <- projectDirectory(project_name,path)
   
-  projectSkeleton(project_directory)
+  projectSkeleton(project_directory,force = force)
   
   readme(project_name,path,type)
   

@@ -22,6 +22,7 @@ projectDirectory <- function(project_name,path){
 #' Project skeleton
 #' @description Initialise the basic project directories and files.
 #' @param project_directory the project directory file path
+#' @param force force project creation if project directory already exists
 #' @examples 
 #' \dontrun{
 #' projectSkeleton(paste0(tempdir(),'/test_project'))
@@ -29,9 +30,9 @@ projectDirectory <- function(project_name,path){
 #' @importFrom rstudioapi isAvailable initializeProject
 #' @export
 
-projectSkeleton <- function(project_directory){
+projectSkeleton <- function(project_directory,force = FALSE){
   
-  if (dir.exists(project_directory)) {
+  if (dir.exists(project_directory) & force == FALSE) {
     stop('Project directory already exists',call. = FALSE)
   }
   
