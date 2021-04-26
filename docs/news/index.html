@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">projecttemplates</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
       </span>
     </div>
 
@@ -114,11 +114,20 @@
       <small>Source: <a href='https://github.com/jasenfinch/projecttemplates/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="projecttemplates-041" class="section level1">
+<h1 class="page-header" data-toc-text="0.4.1">
+<a href="#projecttemplates-041" class="anchor"></a>projecttemplates 0.4.1</h1>
+<ul>
+<li><p><code><a href="../reference/targetsScript.html">projecttemplates::targetsScript()</a></code> function now exported.</p></li>
+<li><p>A <code>run.R</code> script now added to a project directory for executing a <code>targets</code> analysis through <code><a href="../reference/targetsRun.html">projecttemplates::targetsRun()</a></code>.</p></li>
+<li><p>Project creation can be forced using the <code>force</code> argument of <code>projecttemplate::template()</code>.</p></li>
+</ul>
+</div>
     <div id="projecttemplates-040" class="section level1">
 <h1 class="page-header" data-toc-text="0.4.0">
 <a href="#projecttemplates-040" class="anchor"></a>projecttemplates 0.4.0</h1>
 <ul>
-<li><p><code>docker</code> argument in <code><a href="../reference/template.html">projecttemplates::template</a></code> now works correctly.</p></li>
+<li><p><code>docker</code> argument in <code><a href="../reference/template.html">projecttemplates::template()</a></code> now works correctly.</p></li>
 <li><p>The project templates now use the <a href="https://docs.ropensci.org/targets/"><code>targets</code></a> package for workflow management.</p></li>
 <li><p>Intermediate helper functions are now exported.</p></li>
 <li><p>Added a <code>pkgdown</code> site available <a href="https://jasenfinch.github.io/projecttemplates/">here</a>.</p></li>
@@ -135,7 +144,7 @@
 <h1 class="page-header" data-toc-text="0.3.4">
 <a href="#projecttemplates-034" class="anchor"></a>projecttemplates 0.3.4</h1>
 <ul>
-<li><p>Removed use of the now defunct <code><a href="https://usethis.r-lib.org/reference/git_credentials.html">usethis::git_credentials()</a></code> and <code><a href="https://usethis.r-lib.org/reference/usethis-defunct.html">usethis::github_token</a></code>.</p></li>
+<li><p>Removed use of the now defunct <code><a href="https://usethis.r-lib.org/reference/git_credentials.html">usethis::git_credentials()</a></code> and <code><a href="https://usethis.r-lib.org/reference/usethis-defunct.html">usethis::github_token()</a></code>.</p></li>
 <li><p>All git interaction now uses the <code>gert</code> package instead of <code>git2r</code>.</p></li>
 </ul>
 </div>
@@ -144,7 +153,7 @@
 <a href="#projecttemplates-033" class="anchor"></a>projecttemplates 0.3.3</h1>
 <ul>
 <li><p>Added a <code>NEWS.md</code> file to track changes to the package.</p></li>
-<li><p>Added <code>rebuild</code> argument to <code><a href="../reference/template.html">projecttemplates::template</a></code> to force the rebuild of packages on installation into the project <code>renv</code> package cache.</p></li>
+<li><p>Added <code>rebuild</code> argument to <code><a href="../reference/template.html">projecttemplates::template()</a></code> to force the rebuild of packages on installation into the project <code>renv</code> package cache.</p></li>
 <li><p>.Rhistory now ignored by git.</p></li>
 </ul>
 </div>
