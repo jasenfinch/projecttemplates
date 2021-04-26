@@ -24,6 +24,17 @@ targets <- function(project_directory,type = projectTypes()){
   utils(project_directory,type)
 }
 
+#' Add a targets script
+#' @description Add a _targets.R script to a project directory
+#' @param project_directory the project directory file path
+#' @param type project type. Should be one returned by \code{projectTypes()}
+#' @examples 
+#' \dontrun{
+#' projectSkeleton(paste0(tempdir(),'/test_project'))
+#' targetsPipeline(paste0(tempdir(),'/test_project'),type = 'report')
+#' }
+#' @export
+
 targetsScript <- function(project_directory,type = projectTypes()){
   if (missing(type)) {
     type <- 'report'
