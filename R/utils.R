@@ -18,9 +18,14 @@ utils <- function(project_directory = '.',
     cran_bioc <- c(cran,bioc) %>% 
       str_c(collapse = ',') 
   
-    github <- github %>% 
-      str_c('"',.,'"') %>% 
-      str_c(collapse = ',')
+    if (length(github) > 0){
+      github <- github %>% 
+        str_c('"',.,'"') %>% 
+        str_c(collapse = ',')
+    } else {
+      github <- ''
+    }
+    
   
   if (nchar(cran_bioc) > 0) {
     cran_bioc <- glue('pacman::p_load({cran_bioc},install = FALSE)')
@@ -38,10 +43,10 @@ utils <- function(project_directory = '.',
 ## Restore package cache
 renv::restore()
 
-## Load dependant CRAN or Bioconductor libraries
+## Load CRAN or Bioconductor package dependencies
 {cran_bioc}
 
-## Load dependant GitHub libraries
+## Load dependant GitHub package dependencies
 {github}
 
 ## Resolve conflicts

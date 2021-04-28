@@ -46,6 +46,6 @@ Generate a project template directory.
 }
 \examples{
 \dontrun{
-template('A new project',type = 'report',start = FALSE)
+template('A new project',type = 'report',github = FALSE,start = FALSE)
 }
 }
