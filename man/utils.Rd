@@ -18,7 +18,7 @@ utils(
 
 \item{bioc}{character vector of bioconductor R package dependencies}
 
-\item{ghithub}{character vector of GitHub R package dependencies in the form `repository/package_name`}
+\item{github}{character vector of GitHub R package dependencies in the form `repository/package_name`}
 }
 \description{
 Add package utilites to a project directory.

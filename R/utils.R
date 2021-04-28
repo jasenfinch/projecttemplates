@@ -3,7 +3,7 @@
 #' @param project_directory the project directory file path
 #' @param cran character vector of cran R package dependencies
 #' @param bioc character vector of bioconductor R package dependencies
-#' @param ghithub character vector of GitHub R package dependencies in the form `repository/package_name`
+#' @param github character vector of GitHub R package dependencies in the form `repository/package_name`
 #' @examples
 #' \dontrun{
 #' utils(paste0(tempdir(),'/test_project'),cran = 'tidyverse')
