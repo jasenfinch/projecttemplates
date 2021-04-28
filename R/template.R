@@ -44,6 +44,8 @@ template <- function(project_name,
   
   targets(project_directory,type)
   
+  utils(project_directory,type)
+  
   output(project_name,project_directory,type)
   
   renvInitialise(project_directory,rebuild = rebuild)
