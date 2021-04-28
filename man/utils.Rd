@@ -2,21 +2,29 @@
 % Please edit documentation in R/utils.R
 \name{utils}
 \alias{utils}
-\title{Add package utilities}
+\title{Add R package loading utilities}
 \usage{
-utils(project_directory, type)
+utils(
+  project_directory = ".",
+  cran = character(),
+  bioc = character(),
+  github = character()
+)
 }
 \arguments{
 \item{project_directory}{the project directory file path}
 
-\item{type}{project type. Should be one returned by \code{projectTypes()}.}
+\item{cran}{character vector of cran R package dependencies}
+
+\item{bioc}{character vector of bioconductor R package dependencies}
+
+\item{github}{character vector of GitHub R package dependencies in the form `repository/package_name`}
 }
 \description{
 Add package utilites to a project directory.
 }
 \examples{
 \dontrun{
-projectSkeleton(paste0(tempdir(),'/test_project'))
-utils(paste0(tempdir(),'/test_project'),type = 'report')
+utils(paste0(tempdir(),'/test_project'),cran = 'tidyverse')
 }
 }

@@ -1,6 +1,6 @@
 Package: projecttemplates
 Title: Project Templates for Reproducible Research and Analyses
-Version: 0.4.1
+Version: 0.4.2
 Authors@R: 
     person(given = "Jasen",
            family = "Finch",
@@ -22,7 +22,8 @@ Imports: glue,
   callr,
   usethis,
   gh,
-  gert
+  gert,
+  BiocManager
 Suggests: 
     testthat,
     covr,

@@ -14,7 +14,7 @@
 #' @importFrom rstudioapi openProject
 #' @examples 
 #' \dontrun{
-#' template('A new project',type = 'report',start = FALSE)
+#' template('A new project',type = 'report',github = FALSE,start = FALSE)
 #' }
 #' @export
 
@@ -44,9 +44,15 @@ template <- function(project_name,
   
   targets(project_directory,type)
   
+  utils(str_c(project_directory,'/R'),
+        cran = cranPackages(type),
+        github = githubPackages(type))
+  
   output(project_name,project_directory,type)
   
-  renvInitialise(project_directory,rebuild = rebuild)
+  renvInitialise(project_directory,
+                 github = githubPackages(type),
+                 rebuild = rebuild)
   
   if(isTRUE(docker)){
     docker(project_name,path) 

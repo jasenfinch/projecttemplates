@@ -22,7 +22,6 @@ targets <- function(project_directory,type = projectTypes()){
   targetsScript(project_directory,type)
   targetsPipeline(project_directory,type)
   targetsRun(project_directory)
-  utils(project_directory,type)
 }
 
 #' Add a targets script
