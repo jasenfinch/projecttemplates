@@ -1,16 +1,57 @@
-#' Add package utilities
+#' Add R package loading utilities
 #' @description Add package utilites to a project directory.
 #' @param project_directory the project directory file path
-#' @param type project type. Should be one returned by \code{projectTypes()}.
+#' @param cran character vector of cran R package dependencies
+#' @param bioc character vector of bioconductor R package dependencies
+#' @param ghithub character vector of GitHub R package dependencies in the form `repository/package_name`
 #' @examples
 #' \dontrun{
-#' projectSkeleton(paste0(tempdir(),'/test_project'))
-#' utils(paste0(tempdir(),'/test_project'),type = 'report')
+#' utils(paste0(tempdir(),'/test_project'),cran = 'tidyverse')
 #' }
 #' @export
 
-utils <- function(project_directory,type){
+utils <- function(project_directory = '.',
+                  cran = character(),
+                  bioc = character(),
+                  github = character()){
   
+    cran_bioc <- c(cran,bioc) %>% 
+      str_c(collapse = ',') 
+  
+    github <- github %>% 
+      str_c('"',.,'"') %>% 
+      str_c(collapse = ',')
+  
+  if (nchar(cran_bioc) > 0) {
+    cran_bioc <- glue('pacman::p_load({cran_bioc},install = FALSE)')
+  } else {
+    cran_bioc <- glue('#pacman::p_load(install = FALSE)')
+  }
+    
+  if (nchar(github) > 0){
+    github <- glue('pacman::p_load_gh({github},install = FALSE)')
+  } else {
+    github <- glue('#pacman::p_load_gh(install = FALSE)')
+  }
+  
+  script <- glue('
+## Restore package cache
+renv::restore()
+
+## Load dependant CRAN or Bioconductor libraries
+{cran_bioc}
+
+## Load dependant GitHub libraries
+{github}
+
+## Resolve conflicts
+# conflict_prefer(quiet = TRUE)
+
+')
+  writeLines(script,glue('{project_directory}/utils.R'))
+}
+
+cranPackages <- function(type){
   packs <- c('targets',
              'tarchetypes',
              'conflicted',
@@ -25,9 +66,12 @@ utils <- function(project_directory,type){
   )
   
   packs_cran <- packs %>%
-    c(.,custom_packs_cran[[type]]) %>%
-    str_c(collapse = ',')
+    c(.,custom_packs_cran[[type]])
   
+  return(packs_cran)
+}
+
+githubPackages <- function(type){
   custom_packs_gh <- list(
     report = character(),
     presentation = character(),
@@ -35,28 +79,7 @@ utils <- function(project_directory,type){
   )
   
   packs_gh <- c() %>%
-    c(.,custom_packs_gh[[type]]) %>%
-    str_c(collapse = ',')
+    c(.,custom_packs_gh[[type]])
   
-  if (type != 'manuscript'){
-    packs_gh <- glue('#pacman::p_load_gh(install = FALSE)')
-  } else {
-    packs_gh <- glue('pacman::p_load_gh({packs_gh},install = FALSE)')
-  }
-  
-  script <- glue('
-## Restore package cache
-renv::restore()
-
-## Load dependant CRAN libraries
-pacman::p_load({packs_cran},install = FALSE)
-
-## Load dependant GitHub libraries
-{packs_gh}
-
-## Resolve conflicts
-# conflict_prefer(quiet = TRUE)
-
-')
-  writeLines(script,str_c(project_directory,'/R/utils.R'))
+  return(packs_gh)
 }
