@@ -1,3 +1,9 @@
+# projecttemplates 0.4.2
+
+* CRAN, Bioconductor and GitHub R packages can now be specified in `utils()`.
+
+* Bioconductor and GitHub R packages can now be installed upon `renv` cache initialisation in `renvInitialise()`.
+
 # projecttemplates 0.4.1
 
 * `projecttemplates::targetsScript()` function now exported.
