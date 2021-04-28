@@ -80,7 +80,7 @@ githubPackages <- function(type){
   custom_packs_gh <- list(
     report = character(),
     presentation = character(),
-    manuscript = c('"benmarwick/wordcountaddin"')
+    manuscript = c("benmarwick/wordcountaddin")
   )
   
   packs_gh <- c() %>%
