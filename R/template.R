@@ -50,7 +50,9 @@ template <- function(project_name,
   
   output(project_name,project_directory,type)
   
-  renvInitialise(project_directory,rebuild = rebuild)
+  renvInitialise(project_directory,
+                 github = githubPackages(type),
+                 rebuild = rebuild)
   
   if(isTRUE(docker)){
     docker(project_name,path) 

@@ -22,7 +22,8 @@ Imports: glue,
   callr,
   usethis,
   gh,
-  gert
+  gert,
+  BiocManager
 Suggests: 
     testthat,
     covr,
