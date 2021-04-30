@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Project directory — projectDirectory • projecttemplates</title>
+<title>Add a targets script — targetsScript • projecttemplates</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Project directory — projectDirectory" />
-<meta property="og:description" content="Convert a project name to a directory path." />
+<meta property="og:title" content="Add a targets script — targetsScript" />
+<meta property="og:description" content="Add a _targets.R script to a project directory" />
 
 
 
@@ -111,34 +111,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Project directory</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jasenfinch/projecttemplates/blob/master/R/skeleton.R'><code>R/skeleton.R</code></a></small>
-    <div class="hidden name"><code>projectDirectory.Rd</code></div>
+    <h1>Add a targets script</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jasenfinch/projecttemplates/blob/master/R/targets.R'><code>R/targets.R</code></a></small>
+    <div class="hidden name"><code>targetsScript.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Convert a project name to a directory path.</p>
+    <p>Add a _targets.R script to a project directory</p>
     </div>
 
-    <pre class="usage"><span class='fu'>projectDirectory</span><span class='op'>(</span><span class='va'>project_name</span>, <span class='va'>path</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>targetsScript</span><span class='op'>(</span><span class='va'>project_directory</span>, type <span class='op'>=</span> <span class='fu'><a href='projectTypes.html'>projectTypes</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>project_name</th>
-      <td><p>the project name/title</p></td>
+      <th>project_directory</th>
+      <td><p>the project directory file path</p></td>
     </tr>
     <tr>
-      <th>path</th>
-      <td><p>target file path for project directory</p></td>
+      <th>type</th>
+      <td><p>project type. Should be one returned by <code><a href='projectTypes.html'>projectTypes()</a></code></p></td>
     </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>projectDirectory</span><span class='op'>(</span><span class='st'>'test project'</span>,<span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "/home/jasen/Documents/tools/R-package-dev/projecttemplates/docs/reference/test_project"</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'><a href='projectSkeleton.html'>projectSkeleton</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>,<span class='st'>'/test_project'</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='targetsPipeline.html'>targetsPipeline</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>,<span class='st'>'/test_project'</span><span class='op'>)</span>,type <span class='op'>=</span> <span class='st'>'report'</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
