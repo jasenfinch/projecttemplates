@@ -4,12 +4,7 @@
 \alias{renvInitialise}
 \title{Initialise renv infrastructure}
 \usage{
-renvInitialise(
-  project_directory,
-  bioc = character(),
-  github = character(),
-  rebuild = FALSE
-)
+renvInitialise(project_directory, bioc = character(), github = character())
 }
 \arguments{
 \item{project_directory}{the project directory file path}
@@ -17,8 +12,6 @@ renvInitialise(
 \item{bioc}{bioconductor packages to install into the cache upon initialisation}
 
 \item{github}{GitHub packages to install into the cache upon initialisation}
-
-\item{rebuild}{Force packages to be rebuilt, thereby bypassing any installed versions of the package available in the cache? This can either be a boolean (indicating that all installed packages should be rebuilt), or a vector of package names indicating which packages should be rebuilt.}
 }
 \description{
 Initialise renv infrastructure in a project directory.
