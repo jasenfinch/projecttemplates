@@ -1,3 +1,7 @@
+# projecttemplates 0.4.3
+
+* `renv` R package cache infrastructure is now initiated using `renv::init()`.
+
 # projecttemplates 0.4.2
 
 * CRAN, Bioconductor and GitHub R packages can now be specified in `utils()`.
