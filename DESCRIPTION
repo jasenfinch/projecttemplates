@@ -20,10 +20,8 @@ Imports: glue,
   rstudioapi,
   stringr,
   callr,
-  usethis,
   gh,
-  gert,
-  BiocManager
+  gert
 Suggests: 
     testthat,
     covr,

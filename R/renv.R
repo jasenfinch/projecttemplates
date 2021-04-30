@@ -11,8 +11,6 @@
 #' }
 #' @importFrom renv init
 #' @importFrom callr r
-#' @importFrom usethis proj_set
-#' @importFrom BiocManager install
 #' @export
 
 renvInitialise <- function(project_directory,
@@ -23,7 +21,7 @@ renvInitialise <- function(project_directory,
   renv_init <- r(function(project_directory,bioc,github){
     
     if (length(bioc) > 0) {
-      BiocManager::install(bioc)
+      renv::install(glue('bioc::{bioc}'))
     }
     
     if (length(github) > 0) {
