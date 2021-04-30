@@ -19,7 +19,7 @@ renvInitialise <- function(project_directory,
   renv_init <- r(function(project_directory,bioc,github){
     
     if (length(bioc) > 0) {
-      renv::install(glue('bioc::{bioc}'))
+      renv::install(glue::glue('bioc::{bioc}'))
     }
     
     if (length(github) > 0) {
