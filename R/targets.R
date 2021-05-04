@@ -78,6 +78,7 @@ targetsPipeline <- function(project_directory,type = projectTypes()){
   tar_render(
               {type},
               "{type}/{type}.Rmd",
+              output_dir = "exports",
               quiet = TRUE{formats}
   )
               ')
