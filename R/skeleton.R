@@ -50,4 +50,6 @@ projectSkeleton <- function(project_directory,force = FALSE){
   
   dir.create(str_c(project_directory,'misc',sep = '/'))
   
+  dir.create(str_c(project_directory,'exports',sep = '/'))
+  
 }

@@ -87,16 +87,19 @@ targetsPipeline <- function(project_directory,type = projectTypes()){
   ## render tables
   tar_render(tables,
              "manuscript/tables.Rmd",
+             output_dir = "exports",
              quiet = TRUE),
   
   ## render figures
   tar_render(figures,
              "manuscript/figures.Rmd",
+             output_dir = "exports",
              quiet = TRUE),
   
   ## render supplementary information
   tar_render(supplementary,
              "manuscript/supplementary.Rmd",
+             output_dir = "exports",
              quiet = TRUE),
                  ',
                  cmd)
