@@ -3,7 +3,6 @@
 #' @param project_name project name/title
 #' @param path target file path for project directory 
 #' @param type project type. Should be one returned by \code{projectTypes()}.
-#' @param rebuild force rebuild of packages installed into project renv cache
 #' @param docker TRUE/FALSE. Create project infrastructure for building a docker container to compile the project.
 #' @param git TRUE/FALSE. Initialise a Git repository?
 #' @param github TRUE/FALSE. Create a GitHub repository? Ignored if argument \code{git} is FALSE.
@@ -21,7 +20,6 @@
 template <- function(project_name, 
                      path = '.', 
                      type = projectTypes(), 
-                     rebuild = FALSE,
                      docker = TRUE, 
                      git = TRUE, 
                      github = TRUE, 
@@ -51,8 +49,7 @@ template <- function(project_name,
   output(project_name,project_directory,type)
   
   renvInitialise(project_directory,
-                 github = githubPackages(type),
-                 rebuild = rebuild)
+                 github = githubPackages(type))
   
   if(isTRUE(docker)){
     docker(project_name,path) 

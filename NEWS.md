@@ -1,3 +1,13 @@
+# projecttemplates 0.4.4
+
+* Added `exports` directory to the template skeleton.
+
+* Removed the use of `BiocManager::install()` for installing Bioconductor packages, instead using `renv::install()`.
+
+* The `rebuild` argument has been removed from `template()` and `renvInitialise()`.
+
+* Template project analysis outputs now directed to the `exports` directory.
+
 # projecttemplates 0.4.3
 
 * `renv` R package cache infrastructure is now initiated using `renv::init()`.
