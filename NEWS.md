@@ -1,3 +1,7 @@
+# projecttemplates 0.4.5
+
+* `renvInitialise()` now initialises the project library to ensure that Bioconductor and GitHub dependency packages are installed correctly.
+
 # projecttemplates 0.4.4
 
 * Added `exports` directory to the template skeleton.
