@@ -8,7 +8,7 @@
 #' projectSkeleton(paste0(tempdir(),'/test_project'))
 #' renvInitialise(paste0(tempdir(),'/test_project'))
 #' }
-#' @importFrom renv init
+#' @importFrom renv snapshot hydrate
 #' @importFrom callr r
 #' @export
 
@@ -16,17 +16,24 @@ renvInitialise <- function(project_directory,
                            bioc = character(),
                            github = character()){
   message('Initialising renv cache')
-  renv_init <- r(function(project_directory,bioc,github){
+  renv_init <- callr::r(function(project_directory,bioc,github){
+    
+    project_directory <- normalizePath(project_directory)
+    
+    renv::init(project = project_directory,bare = TRUE)
     
     if (length(bioc) > 0) {
-      renv::install(glue::glue('bioc::{bioc}'))
+      renv::install(paste0('bioc::',bioc),project = project_directory)
     }
     
     if (length(github) > 0) {
-      renv::install(github)  
+      renv::install(github,project = project_directory)  
     }
     
-    renv::init(project = project_directory)
+    renv::hydrate(project = project_directory)
+    
+    renv::snapshot(project = project_directory)
+    
   },
   args = list(project_directory = project_directory,
               bioc = bioc,
