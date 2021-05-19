@@ -4,12 +4,18 @@
 \alias{createGit}
 \title{Add git infrastructure}
 \usage{
-createGit(project_directory, type)
+createGit(
+  project_directory,
+  type,
+  ignore = c(".Rhistory", ".Rproj.user", "_targets", "data", "exports")
+)
 }
 \arguments{
 \item{project_directory}{the project directory file path}
 
 \item{type}{project type. Should be one returned by \code{projectTypes()}.}
+
+\item{ignore}{a character vector of files or directories for git to add to the .gitignore of the created git repository.}
 }
 \description{
 Add git infrastructure to a project directory.
