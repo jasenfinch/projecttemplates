@@ -1,3 +1,9 @@
+# pojecttemplates 0.4.6
+
+* Added `ignore` argument to `createGit()` to enable the customisation of files and directories ignored by git.
+
+* `_targets`,`data` and `exports` folders ignored by git by default.
+
 # projecttemplates 0.4.5
 
 * `renvInitialise()` now initialises the project library to ensure that Bioconductor and GitHub dependency packages are installed correctly.
