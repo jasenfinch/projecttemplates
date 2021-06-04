@@ -3,11 +3,13 @@ context('template')
 
 test_that('report template works',{
   
-  skip_on_ci()
-  
   temp_path <- tempdir()
   
-  template('report test',path = temp_path,type = 'report',github = FALSE,start = FALSE)
+  template('report test',path = temp_path,
+           type = 'report',
+           renv = FALSE,
+           github = FALSE,
+           start = FALSE)
   
   temp_dirs <- list.dirs(temp_path,recursive = FALSE)
   
@@ -16,11 +18,14 @@ test_that('report template works',{
 
 test_that('presentation template works',{
   
-  skip_on_ci()
-  
   temp_path <- tempdir()
   
-  template('presentation test',path = temp_path,type = 'presentation',github = FALSE,start = FALSE)
+  template('presentation test',
+           path = temp_path,
+           type = 'presentation',
+           renv = FALSE,
+           github = FALSE,
+           start = FALSE)
   
   temp_dirs <- list.dirs(temp_path,recursive = FALSE)
   
@@ -29,15 +34,14 @@ test_that('presentation template works',{
 
 test_that('manuscript template works',{
   
-  skip_on_ci()
-  
-  if (!('wordcountaddin' %in% rownames(installed.packages()))){
-    devtools::install_github('benmarwick/wordcountaddin')
-  }
-  
   temp_path <- tempdir()
   
-  template('manuscript test',path = temp_path,type = 'manuscript',github = FALSE,start = FALSE)
+  template('manuscript test',
+           path = temp_path,
+           type = 'manuscript',
+           renv = FALSE,
+           github = FALSE,
+           start = FALSE)
   
   temp_dirs <- list.dirs(temp_path,recursive = FALSE)
   
