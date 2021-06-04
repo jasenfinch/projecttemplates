@@ -4,7 +4,7 @@
 \alias{readme}
 \title{Project README}
 \usage{
-readme(project_name, path, type = projectTypes())
+readme(project_name, path, type = projectTypes(), renv = TRUE)
 }
 \arguments{
 \item{project_name}{project name/title}
@@ -12,6 +12,8 @@ readme(project_name, path, type = projectTypes())
 \item{path}{target file path for project directory}
 
 \item{type}{project type. Should be one returned by \code{projectTypes()}.}
+
+\item{renv}{add text for renv support}
 }
 \description{
 Export a README to a project directory

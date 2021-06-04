@@ -2,6 +2,7 @@
 #' @description Add targets infrastructure to a project directory
 #' @param project_directory the project directory file path
 #' @param type project type. Should be one returned by \code{projectTypes()}.
+#' @param ... arguments to pass to \code{targetsRun()}
 #' @examples
 #' \dontrun{
 #' projectSkeleton(paste0(tempdir(),'/test_project'))
@@ -9,7 +10,7 @@
 #' }
 #' @export
 
-targets <- function(project_directory,type = projectTypes()){
+targets <- function(project_directory,type = projectTypes(),...){
   
   if (missing(type)) {
     type <- 'report'
@@ -21,7 +22,7 @@ targets <- function(project_directory,type = projectTypes()){
   
   targetsScript(project_directory,type)
   targetsPipeline(project_directory,type)
-  targetsRun(project_directory)
+  targetsRun(project_directory,...)
 }
 
 scriptHeader <- function(){

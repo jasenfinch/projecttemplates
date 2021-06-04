@@ -4,12 +4,14 @@
 \alias{targets}
 \title{Add targets infrastructure}
 \usage{
-targets(project_directory, type = projectTypes())
+targets(project_directory, type = projectTypes(), ...)
 }
 \arguments{
 \item{project_directory}{the project directory file path}
 
 \item{type}{project type. Should be one returned by \code{projectTypes()}.}
+
+\item{...}{arguments to pass to \code{targetsRun()}}
 }
 \description{
 Add targets infrastructure to a project directory
