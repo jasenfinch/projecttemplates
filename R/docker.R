@@ -18,8 +18,11 @@ docker <- function(project_name,path){
   project_directory <- projectDirectory(project_name,
                                         path)
   
+  r_version <- str_c(R.Version()$major,'.',R.Version()$minor)
+  
   glue('
-FROM rocker/verse:4.0.0
+{scriptHeader()}
+FROM rocker/verse:{r_version}
 
 ARG DEBIAN_FRONTEND=noninteractive
 
