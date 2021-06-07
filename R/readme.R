@@ -35,7 +35,3 @@ To run the analysis, either execute `targets::tar_make()` in an `R` session load
   
   writeLines(header,str_c(project_directory,'/README.md'))
 }
-
-readmeFooter <- function(){
-  
-}

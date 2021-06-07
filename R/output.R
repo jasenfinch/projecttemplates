@@ -237,6 +237,8 @@ knitr::opts_chunk$set(echo = FALSE,
   }
 }
 
+#' @importFrom utils packageVersion
+
 reportHeader <- function(){
   
   version <- packageVersion('projecttemplates') %>% 
