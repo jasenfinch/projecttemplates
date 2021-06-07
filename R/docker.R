@@ -1,7 +1,9 @@
 #' Add docker infrastructure
 #' @description Add docker infrastructure to a project directory.
 #' @param project_name project name/title
+#' @param type project type. Should be one returned by \code{projectTypes()}.
 #' @param path target file path for project directory
+#' @param renv add infrastructure for renv package environment management
 #' @examples 
 #' \dontrun{
 #' projectSkeleton(paste0(tempdir(),'/test_project'))
@@ -9,8 +11,11 @@
 #' }
 #' @export
 
-docker <- function(project_name,path){
+docker <- function(project_name,type = 'report',path,renv = TRUE){
   message('Adding Docker infrastructure')
+  
+  type <- match.arg(type,
+                    choices = projectTypes())
   
   project_name_directory <- project_name %>%
     str_replace_all(' ','_')
@@ -20,27 +25,39 @@ docker <- function(project_name,path){
   
   r_version <- str_c(R.Version()$major,'.',R.Version()$minor)
   
-  glue('
-{scriptHeader()}
-FROM rocker/verse:{r_version}
+  if (type == 'manuscript'){
+    texlive_install <-  '
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update
+RUN apt-get install -y apt-utils texlive'
+  } else {
+    texlive_install <- ''
+  }
+  
+  if (isTRUE(renv)){
+    
+    renv_install <- '
 
-RUN apt-get install -y apt-utils texlive-base
-
-RUN apt-get install -y texlive
-
-RUN Rscript -e "install.packages(c(\'renv\'), repos = c(CRAN = \'https://cloud.r-project.org\'))"
-
-WORKDIR /home/rstudio/{project_name_directory}
-
+RUN Rscript -e "install.packages(c(\'renv\'), repos = c(CRAN = \'https://cloud.r-project.org\'))"'
+    
+    renv_text <- '
+    
 COPY renv.lock renv.lock
 
-RUN Rscript -e "renv::consent(provided = TRUE); renv::restore(prompt = FALSE)"
+RUN Rscript -e "renv::consent(provided = TRUE); renv::restore(prompt = FALSE)"' 
+  } else {
+    renv_install <- ''
+    renv_text <- ''
+  }
+  
+  glue('
+{scriptHeader()}
+FROM rocker/verse:{r_version}{texlive_install}{renv_install}
 
-ENTRYPOINT ["Rscript","-e","renv::activate(); renv::hydrate(); targets::tar_make()"]
+WORKDIR /home/rstudio/{project_name_directory}{renv_text}
+
+ENTRYPOINT ["Rscript","run.R"]
        ') %>%
     writeLines(con = str_c(project_directory,'/Dockerfile'))
   

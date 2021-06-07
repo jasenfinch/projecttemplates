@@ -33,11 +33,8 @@ template <- function(project_name,
                      force = FALSE,
                      start = TRUE){
   
-  if (missing(type)) {
-    type <- 'report'
-  }
-  
-  type <- match.arg(type)
+  type <- match.arg(type,
+                    choices = projectTypes())
   
   project_directory <- projectDirectory(project_name,path)
   
@@ -59,7 +56,7 @@ template <- function(project_name,
   }
   
   if(isTRUE(docker)){
-    docker(project_name,path) 
+    docker(project_name,type,path,renv) 
   }
   
   if (all(git,github,docker,github_actions)){

@@ -4,12 +4,16 @@
 \alias{docker}
 \title{Add docker infrastructure}
 \usage{
-docker(project_name, path)
+docker(project_name, type = "report", path, renv = TRUE)
 }
 \arguments{
 \item{project_name}{project name/title}
 
+\item{type}{project type. Should be one returned by \code{projectTypes()}.}
+
 \item{path}{target file path for project directory}
+
+\item{renv}{add infrastructure for renv package environment management}
 }
 \description{
 Add docker infrastructure to a project directory.
