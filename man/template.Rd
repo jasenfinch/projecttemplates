@@ -8,6 +8,7 @@ template(
   project_name,
   path = ".",
   type = projectTypes(),
+  renv = TRUE,
   docker = TRUE,
   git = TRUE,
   github = TRUE,
@@ -23,6 +24,8 @@ template(
 \item{path}{target file path for project directory}
 
 \item{type}{project type. Should be one returned by \code{projectTypes()}.}
+
+\item{renv}{add renv infrastructure for reproducible a R package environment}
 
 \item{docker}{TRUE/FALSE. Create project infrastructure for building a docker container to compile the project.}
 
@@ -43,6 +46,9 @@ Generate a project template directory.
 }
 \examples{
 \dontrun{
-template('A new project',type = 'report',github = FALSE,start = FALSE)
+template('A new project',
+         type = 'report',
+         github = FALSE,
+         start = FALSE)
 }
 }

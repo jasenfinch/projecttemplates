@@ -40,9 +40,6 @@ utils <- function(project_directory = '.',
   }
   
   script <- glue('
-## Restore package cache
-renv::restore()
-
 ## Load CRAN or Bioconductor package dependencies
 {cran_bioc}
 

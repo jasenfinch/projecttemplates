@@ -3,6 +3,7 @@
 #' @param project_name project name/title
 #' @param path target file path for project directory 
 #' @param type project type. Should be one returned by \code{projectTypes()}.
+#' @param renv add renv infrastructure for reproducible a R package environment
 #' @param docker TRUE/FALSE. Create project infrastructure for building a docker container to compile the project.
 #' @param git TRUE/FALSE. Initialise a Git repository?
 #' @param github TRUE/FALSE. Create a GitHub repository? Ignored if argument \code{git} is FALSE.
@@ -13,13 +14,17 @@
 #' @importFrom rstudioapi openProject
 #' @examples 
 #' \dontrun{
-#' template('A new project',type = 'report',github = FALSE,start = FALSE)
+#' template('A new project',
+#'          type = 'report',
+#'          github = FALSE,
+#'          start = FALSE)
 #' }
 #' @export
 
 template <- function(project_name, 
                      path = '.', 
                      type = projectTypes(), 
+                     renv = TRUE,
                      docker = TRUE, 
                      git = TRUE, 
                      github = TRUE, 
@@ -28,19 +33,16 @@ template <- function(project_name,
                      force = FALSE,
                      start = TRUE){
   
-  if (missing(type)) {
-    type <- 'report'
-  }
-  
-  type <- match.arg(type)
+  type <- match.arg(type,
+                    choices = projectTypes())
   
   project_directory <- projectDirectory(project_name,path)
   
   projectSkeleton(project_directory,force = force)
   
-  readme(project_name,path,type)
+  readme(project_name,path,type,renv)
   
-  targets(project_directory,type)
+  targets(project_directory,type,renv)
   
   utils(str_c(project_directory,'/R'),
         cran = cranPackages(type),
@@ -48,12 +50,16 @@ template <- function(project_name,
   
   output(project_name,project_directory,type)
   
-  renvInitialise(project_directory,
-                 github = githubPackages(type))
+  if(isTRUE(renv)){
+    renvInitialise(project_directory,
+                   github = githubPackages(type)) 
+  }
   
   if(isTRUE(docker)){
-    docker(project_name,path) 
+    docker(project_name,type,path,renv) 
   }
+  
+  
   
   if (all(git,github,docker,github_actions)){
     githubActions(project_name,path)
