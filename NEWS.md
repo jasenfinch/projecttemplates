@@ -1,4 +1,16 @@
-# pojecttemplates 0.4.6
+# projecttemplates 0.5.0
+
+* `renv::restore()` moved from `utils.R` to `run.R`.
+
+* The generation of `renv` infrastructure is now optional in `template()`.
+
+* The project Dockerfile is now generated with the in-use R version.
+
+* The project Dockerfile is now specific to the project type.
+
+* The package version and URL now added to all generated files.
+
+# projecttemplates 0.4.6
 
 * Added `ignore` argument to `createGit()` to enable the customisation of files and directories ignored by git.
 
