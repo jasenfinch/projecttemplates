@@ -20,7 +20,10 @@ readme <- function(project_name,path,type = projectTypes(),renv = TRUE){
     renv_text <- ''
   }
   
-  header <- glue('# {project_name}
+  header <- glue('
+{reportHeader()}
+
+# {project_name}
 
 This project is powered the [targets](https://docs.ropensci.org/targets/) package for workflow management{renv_text}.
 
@@ -31,4 +34,8 @@ To run the analysis, either execute `targets::tar_make()` in an `R` session load
 ')
   
   writeLines(header,str_c(project_directory,'/README.md'))
+}
+
+readmeFooter <- function(){
+  
 }
