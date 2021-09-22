@@ -9,7 +9,6 @@ test_that('report template works',{
            path = temp_path,
            type = 'report',
            renv = FALSE,
-           git = FALSE,
            github = FALSE,
            start = FALSE)
   
@@ -26,7 +25,6 @@ test_that('presentation template works',{
            path = temp_path,
            type = 'presentation',
            renv = FALSE,
-           git = FALSE,
            github = FALSE,
            start = FALSE)
   
@@ -43,7 +41,6 @@ test_that('manuscript template works',{
            path = temp_path,
            type = 'manuscript',
            renv = FALSE,
-           git = FALSE,
            github = FALSE,
            start = FALSE)
   

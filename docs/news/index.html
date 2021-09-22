@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">projecttemplates</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1</span>
       </span>
     </div>
 
@@ -114,11 +114,21 @@
       <small>Source: <a href='https://github.com/jasenfinch/projecttemplates/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="projecttemplates-051" class="section level1">
+<h1 class="page-header" data-toc-text="0.5.1">
+<a href="#projecttemplates-051" class="anchor"></a>projecttemplates 0.5.1</h1>
+<ul>
+<li><p>An initial commit is only made in <code><a href="../reference/createGit.html">createGit()</a></code> if a valid git signature is found.</p></li>
+<li><p>The value of the <code>install</code> argument of <a href="https://CRAN.R-project.org/package=pacman"><code>pacman</code></a> loading functions can now be set in <code><a href="../reference/utils.html">utils()</a></code>.</p></li>
+<li><p>In <code><a href="../reference/template.html">template()</a></code>, the <a href="https://CRAN.R-project.org/package=pacman"><code>pacman</code></a> <code>install</code> argument in <code><a href="../reference/utils.html">utils()</a></code> is now dependant on the value of the <code>renv</code> argument.</p></li>
+<li><p>The installation of project package dependencies is now added to the docker file when the <code>renv</code> argument is <code>FALSE</code>.</p></li>
+</ul>
+</div>
     <div id="projecttemplates-050" class="section level1">
 <h1 class="page-header" data-toc-text="0.5.0">
 <a href="#projecttemplates-050" class="anchor"></a>projecttemplates 0.5.0</h1>
 <ul>
-<li><p><code><a href="https://rstudio.github.io/renv//reference/restore.html">renv::restore()</a></code> moved from <code>utils.R</code> to <code>run.R</code>.</p></li>
+<li><p><code><a href="https://rstudio.github.io/renv/reference/restore.html">renv::restore()</a></code> moved from <code>utils.R</code> to <code>run.R</code>.</p></li>
 <li><p>The generation of <code>renv</code> infrastructure is now optional in <code><a href="../reference/template.html">template()</a></code>.</p></li>
 <li><p>The project Dockerfile is now generated with the in-use R version.</p></li>
 <li><p>The project Dockerfile is now specific to the project type.</p></li>
@@ -146,7 +156,7 @@
 <a href="#projecttemplates-044" class="anchor"></a>projecttemplates 0.4.4</h1>
 <ul>
 <li><p>Added <code>exports</code> directory to the template skeleton.</p></li>
-<li><p>Removed the use of <code><a href="https://rdrr.io/pkg/BiocManager/man/install.html">BiocManager::install()</a></code> for installing Bioconductor packages, instead using <code><a href="https://rstudio.github.io/renv//reference/install.html">renv::install()</a></code>.</p></li>
+<li><p>Removed the use of <code><a href="https://rdrr.io/pkg/BiocManager/man/install.html">BiocManager::install()</a></code> for installing Bioconductor packages, instead using <code><a href="https://rstudio.github.io/renv/reference/install.html">renv::install()</a></code>.</p></li>
 <li><p>The <code>rebuild</code> argument has been removed from <code><a href="../reference/template.html">template()</a></code> and <code><a href="../reference/renvInitialise.html">renvInitialise()</a></code>.</p></li>
 <li><p>Template project analysis outputs now directed to the <code>exports</code> directory.</p></li>
 </ul>
@@ -156,7 +166,7 @@
 <a href="#projecttemplates-043" class="anchor"></a>projecttemplates 0.4.3</h1>
 <ul>
 <li>
-<code>renv</code> R package cache infrastructure is now initiated using <code><a href="https://rstudio.github.io/renv//reference/init.html">renv::init()</a></code>.</li>
+<code>renv</code> R package cache infrastructure is now initiated using <code><a href="https://rstudio.github.io/renv/reference/init.html">renv::init()</a></code>.</li>
 </ul>
 </div>
     <div id="projecttemplates-042" class="section level1">

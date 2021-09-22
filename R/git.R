@@ -8,7 +8,7 @@
 #' projectSkeleton(paste0(tempdir(),'/test_project'))
 #' createGit(paste0(tempdir(),'/test_project'),type = 'report')
 #' }
-#' @importFrom gert git_init git_add git_commit
+#' @importFrom gert git_init git_add git_commit git_signature_default
 #' @export
 
 createGit <- function(project_directory,type,ignore = c('.Rhistory','.Rproj.user','_targets','data','exports')){
@@ -26,5 +26,10 @@ createGit <- function(project_directory,type,ignore = c('.Rhistory','.Rproj.user
   writeLines(ignore,con = str_c(project_directory,'/.gitignore'))
   git_add('.*',repo = project_directory)
   git_add('*',repo = project_directory)
-  git_commit('Initial commit',repo = project_directory)
+  
+  git_signature_status <- try(git_signature_default(),silent = TRUE)
+  
+  if (class(git_signature_status) == 'character') {
+    git_commit('Initial commit',repo = project_directory) 
+  }
 }

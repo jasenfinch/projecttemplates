@@ -37,7 +37,7 @@ RUN apt-get install -y apt-utils texlive'
   
   if (isTRUE(renv)){
     
-    renv_install <- '
+    package_install <- '
 
 RUN Rscript -e "install.packages(c(\'renv\'), repos = c(CRAN = \'https://cloud.r-project.org\'))"'
     
@@ -47,13 +47,18 @@ COPY renv.lock renv.lock
 
 RUN Rscript -e "renv::consent(provided = TRUE); renv::restore(prompt = FALSE)"' 
   } else {
-    renv_install <- ''
+    package_install <- '
+    
+COPY R/utils.R utils.R
+RUN Rscript -e "install.packages(\'pacman\')"
+RUN Rscript utils.R
+RUN rm utils.R'
     renv_text <- ''
   }
   
   glue('
 {scriptHeader()}
-FROM rocker/verse:{r_version}{texlive_install}{renv_install}
+FROM rocker/verse:{r_version}{texlive_install}{package_install}
 
 WORKDIR /home/rstudio/{project_name_directory}{renv_text}
 

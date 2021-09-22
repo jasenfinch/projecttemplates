@@ -4,6 +4,7 @@
 #' @param cran character vector of cran R package dependencies
 #' @param bioc character vector of bioconductor R package dependencies
 #' @param github character vector of GitHub R package dependencies in the form `repository/package_name`
+#' @param install value to set install argument of `pacman` package loading functions 
 #' @examples
 #' \dontrun{
 #' utils(paste0(tempdir(),'/test_project'),cran = 'tidyverse')
@@ -13,7 +14,8 @@
 utils <- function(project_directory = '.',
                   cran = character(),
                   bioc = character(),
-                  github = character()){
+                  github = character(),
+                  install = FALSE){
   
     cran_bioc <- c(cran,bioc) %>% 
       str_c(collapse = ',') 
@@ -26,17 +28,18 @@ utils <- function(project_directory = '.',
       github <- ''
     }
     
+    install <- as.character(install)
   
   if (nchar(cran_bioc) > 0) {
-    cran_bioc <- glue('pacman::p_load({cran_bioc},install = FALSE)')
+    cran_bioc <- glue('pacman::p_load({cran_bioc},install = {install})')
   } else {
-    cran_bioc <- glue('#pacman::p_load(install = FALSE)')
+    cran_bioc <- glue('#pacman::p_load(install = {install})')
   }
     
   if (nchar(github) > 0){
-    github <- glue('pacman::p_load_gh({github},install = FALSE)')
+    github <- glue('pacman::p_load_gh({github},install = {install})')
   } else {
-    github <- glue('#pacman::p_load_gh(install = FALSE)')
+    github <- glue('#pacman::p_load_gh(install = {install})')
   }
   
   script <- glue('
