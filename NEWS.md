@@ -2,9 +2,9 @@
 
 * An initial commit is only made in `createGit()` if a valid git signature is found.
 
-* The value of the `install` argument of [`pacman`]() loading functions can now be set in `utils()`.
+* The value of the `install` argument of [`pacman`]( https://CRAN.R-project.org/package=pacman) loading functions can now be set in `utils()`.
 
-* In `template()`, the [`pacman`]() `install` argument in `utils()` is now dependant on the value of the `renv` argument.
+* In `template()`, the [`pacman`]( https://CRAN.R-project.org/package=pacman) `install` argument in `utils()` is now dependant on the value of the `renv` argument.
 
 * The installation of project package dependencies is now added to the docker file when the `renv` argument is `FALSE`.
 
