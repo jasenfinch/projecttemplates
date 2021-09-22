@@ -29,7 +29,7 @@ createGit <- function(project_directory,type,ignore = c('.Rhistory','.Rproj.user
   
   git_signature_status <- try(git_signature_default(),silent = TRUE)
   
-  if (is.character(git_signature_status)) {
+  if (class(git_signature_status) == 'character') {
     git_commit('Initial commit',repo = project_directory) 
   }
 }
