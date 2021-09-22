@@ -1,3 +1,13 @@
+# projecttemplates 0.5.1
+
+* An initial commit is only made in `createGit()` if a valid git signature is found.
+
+* The value of the `install` argument of [`pacman`]() loading functions can now be set in `utils()`.
+
+* In `template()`, the [`pacman`]() `install` argument in `utils()` is now dependant on the value of the `renv` argument.
+
+* The installation of project package dependencies is now added to the docker file when the `renv` argument is `FALSE`.
+
 # projecttemplates 0.5.0
 
 * `renv::restore()` moved from `utils.R` to `run.R`.
