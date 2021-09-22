@@ -46,7 +46,8 @@ template <- function(project_name,
   
   utils(str_c(project_directory,'/R'),
         cran = cranPackages(type),
-        github = githubPackages(type))
+        github = githubPackages(type),
+        install = !renv)
   
   output(project_name,project_directory,type)
   
