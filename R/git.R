@@ -26,5 +26,10 @@ createGit <- function(project_directory,type,ignore = c('.Rhistory','.Rproj.user
   writeLines(ignore,con = str_c(project_directory,'/.gitignore'))
   git_add('.*',repo = project_directory)
   git_add('*',repo = project_directory)
-  git_commit('Initial commit',repo = project_directory)
+  
+  git_signature_status <- try(git_signature_default(),silent = TRUE)
+  
+  if (is.character(git_signature_status)) {
+    git_commit('Initial commit',repo = project_directory) 
+  }
 }
