@@ -8,7 +8,8 @@ utils(
   project_directory = ".",
   cran = character(),
   bioc = character(),
-  github = character()
+  github = character(),
+  install = FALSE
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ utils(
 \item{bioc}{character vector of bioconductor R package dependencies}
 
 \item{github}{character vector of GitHub R package dependencies in the form `repository/package_name`}
+
+\item{install}{value to set install argument of `pacman` package loading functions}
 }
 \description{
 Add package utilites to a project directory.

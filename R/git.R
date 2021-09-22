@@ -8,7 +8,7 @@
 #' projectSkeleton(paste0(tempdir(),'/test_project'))
 #' createGit(paste0(tempdir(),'/test_project'),type = 'report')
 #' }
-#' @importFrom gert git_init git_add git_commit
+#' @importFrom gert git_init git_add git_commit git_signature_default
 #' @export
 
 createGit <- function(project_directory,type,ignore = c('.Rhistory','.Rproj.user','_targets','data','exports')){
