@@ -60,7 +60,7 @@ RUN rm utils.R'
 {scriptHeader()}
 FROM rocker/verse:{r_version}{texlive_install}{package_install}
 
-WORKDIR /home/rstudio/{project_name_directory}{renv_text}
+WORKDIR /home/{project_name_directory}{renv_text}
 
 ENTRYPOINT ["Rscript","run.R"]
        ') %>%
@@ -80,7 +80,7 @@ docker build . -t {str_to_lower(project_name_directory)}
 The project can then be compiled using:
 
 ``` sh
-docker run -v $(pwd):/home/rstudio/{project_name_directory} {str_to_lower(project_name_directory)}
+docker run -v $(pwd):/home/{project_name_directory} {str_to_lower(project_name_directory)}
 ```
        ") %>%
     write(file = str_c(project_directory,'/README.md'),append = TRUE)
