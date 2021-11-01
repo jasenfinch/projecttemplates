@@ -2,7 +2,7 @@ pandoc: 2.11.4
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2021-09-22T18:01Z
+last_built: 2021-11-01T14:52Z
 urls:
   reference: https://jasenfinch.github.io/projecttemplates//reference
   article: https://jasenfinch.github.io/projecttemplates//articles
