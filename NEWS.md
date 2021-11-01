@@ -1,3 +1,7 @@
+# projecttemplates 0.5.2
+
+* Removed `rstudio` from the project path in the Dockerfile.
+
 # projecttemplates 0.5.1
 
 * An initial commit is only made in `createGit()` if a valid git signature is found.
