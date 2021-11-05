@@ -1,3 +1,7 @@
+# projecttemplates 0.5.3
+
+* Added [`pacman`]( https://CRAN.R-project.org/package=pacman) as an import to ensure that it is installed incase `renv = FALSE` is used.
+
 # projecttemplates 0.5.2
 
 * Removed `rstudio` from the project path in the Dockerfile.
