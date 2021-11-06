@@ -1,6 +1,6 @@
 Package: projecttemplates
 Title: Project Templates for Reproducible Research and Analyses
-Version: 0.5.2
+Version: 0.5.3
 Authors@R: 
     person(given = "Jasen",
            family = "Finch",
@@ -15,6 +15,7 @@ RoxygenNote: 7.1.2
 Imports: glue,
   lubridate,
   magrittr,
+  pacman,
   renv,
   rstudioapi,
   stringr,

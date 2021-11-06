@@ -61,6 +61,8 @@ source("R/utils.R")
   list.files(full.names = T) %>%
   walk(source)                   
 
+tar_option_set(error = "continue")
+
 ')
   
   writeLines(template,str_c(project_directory,'_targets.R',sep = '/'))
@@ -156,6 +158,10 @@ targetsRun <- function(project_directory,renv = TRUE){
 ## Execute this script to run the project analysis
 {restore}
 targets::tar_make()
+
+pipeline_graph <- targets::tar_visnetwork()
+visNetwork::visSave(pipeline_graph,
+                    file = "exports/pipeline_graph.html")
 ')
   
   writeLines(script,str_c(project_directory,'/run.R'))
