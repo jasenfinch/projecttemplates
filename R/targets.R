@@ -158,6 +158,10 @@ targetsRun <- function(project_directory,renv = TRUE){
 ## Execute this script to run the project analysis
 {restore}
 targets::tar_make()
+
+pipeline_graph <- targets::tar_visnetwork()
+visNetwork::visSave(pipeline_graph,
+                    file = "exports/pipeline_graph.html")
 ')
   
   writeLines(script,str_c(project_directory,'/run.R'))
