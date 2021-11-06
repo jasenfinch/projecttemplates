@@ -61,6 +61,8 @@ source("R/utils.R")
   list.files(full.names = T) %>%
   walk(source)                   
 
+tar_option_set(error = "continue")
+
 ')
   
   writeLines(template,str_c(project_directory,'_targets.R',sep = '/'))
