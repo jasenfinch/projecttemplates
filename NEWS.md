@@ -1,6 +1,6 @@
 # projecttemplates 0.5.3
 
-* Added [`pacman`]( https://CRAN.R-project.org/package=pacman) as an import to ensure that it is installed incase `renv = FALSE` is used.
+* Added [`pacman`]( https://CRAN.R-project.org/package=pacman) as an import to ensure that it is installed in case `renv = FALSE` is used.
 
 * Project templates targets error [option](https://docs.ropensci.org/targets/reference/tar_option_set.html) now set to `"continue"` to enable the pipeline to continue if an error is encountered.
 
@@ -82,7 +82,7 @@
 
 # projecttemplates 0.3.5
 
-* Re-added the addition of the remote URL during GitHub repo setup.
+* Re-added the addition of the remote URL during GitHub repo set-up.
 
 # projecttemplates 0.3.4
 
