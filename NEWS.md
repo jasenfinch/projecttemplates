@@ -2,6 +2,10 @@
 
 * Added [`pacman`]( https://CRAN.R-project.org/package=pacman) as an import to ensure that it is installed incase `renv = FALSE` is used.
 
+* Project templates targets error [option](https://docs.ropensci.org/targets/reference/tar_option_set.html) now set to `"continue"` to enable the pipeline to continue if an error is encountered.
+
+* The pipeline network graph generation added to the generated run script.
+
 # projecttemplates 0.5.2
 
 * Removed `rstudio` from the project path in the Dockerfile.
