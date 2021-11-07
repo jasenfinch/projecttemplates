@@ -1,3 +1,7 @@
+# projecttempaltes 0.5.4
+
+* Fixed warning that is returned when directories in the project `path` do not exist prior to template generation.
+
 # projecttemplates 0.5.3
 
 * Added [`pacman`]( https://CRAN.R-project.org/package=pacman) as an import to ensure that it is installed in case `renv = FALSE` is used.
