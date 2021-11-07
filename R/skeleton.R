@@ -38,7 +38,7 @@ projectSkeleton <- function(project_directory,force = FALSE){
   
   message(str_c('Creating project directory at ',project_directory))
   
-  dir.create(project_directory)
+  dir.create(project_directory,recursive = TRUE)
   
   if (isAvailable()) {
     initializeProject(project_directory)
