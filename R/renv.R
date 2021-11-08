@@ -9,14 +9,14 @@
 #' renvInitialise(paste0(tempdir(),'/test_project'))
 #' }
 #' @importFrom renv snapshot hydrate
-#' @importFrom callr r
+#' @importFrom callr r_copycat
 #' @export
 
 renvInitialise <- function(project_directory,
                            bioc = character(),
                            github = character()){
   message('Initialising renv cache')
-  renv_init <- callr::r(function(project_directory,bioc,github){
+  renv_init <- r_copycat(function(project_directory,bioc,github){
     
     project_directory <- normalizePath(project_directory)
     
