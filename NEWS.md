@@ -1,4 +1,10 @@
-# projecttempaltes 0.5.4
+# projecttemplates 0.5.5
+
+* Fixed the use of user `renv` settings during initialisation to ensure that the user cache is used.
+
+* Simplified the `renv` cache restore term in the generated project Dockerfile.
+
+# projecttemplates 0.5.4
 
 * Fixed warning that is returned when directories in the project `path` do not exist prior to template generation.
 
