@@ -45,7 +45,7 @@ RUN Rscript -e "install.packages(c(\'renv\'), repos = c(CRAN = \'https://cloud.r
     
 COPY renv.lock renv.lock
 
-RUN Rscript -e "renv::consent(provided = TRUE); renv::restore(prompt = FALSE)"' 
+RUN Rscript -e "renv::restore()"' 
   } else {
     package_install <- '
     
