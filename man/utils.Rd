@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{utils}
 \alias{utils}
-\title{Add R package loading utilities}
+\title{Add R package settings}
 \usage{
 utils(
   project_directory = ".",
@@ -24,7 +24,7 @@ utils(
 \item{install}{value to set install argument of `pacman` package loading functions}
 }
 \description{
-Add package utilites to a project directory.
+Add package utilities to a project directory such as package loading and settings.
 }
 \examples{
 \dontrun{
