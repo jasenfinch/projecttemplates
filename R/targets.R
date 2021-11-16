@@ -58,11 +58,8 @@ targetsScript <- function(project_directory,type = projectTypes()){
 source("R/utils.R")
 
 "R/functions/" %>%
-  list.files(full.names = T) %>%
+  list.files(full.names = TRUE) %>%
   walk(source)                   
-
-tar_option_set(error = "continue")
-
 ')
   
   writeLines(template,str_c(project_directory,'_targets.R',sep = '/'))
@@ -159,7 +156,7 @@ targetsRun <- function(project_directory,renv = TRUE){
 {restore}
 targets::tar_make()
 
-pipeline_graph <- targets::tar_visnetwork()
+pipeline_graph <- targets::tar_visnetwork(label = c("time", "size"))
 visNetwork::visSave(pipeline_graph,
                     file = "exports/pipeline_graph.html")
 ')

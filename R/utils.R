@@ -1,5 +1,5 @@
-#' Add R package loading utilities
-#' @description Add package utilites to a project directory.
+#' Add R package settings
+#' @description Add package utilities to a project directory such as package loading and settings.
 #' @param project_directory the project directory file path
 #' @param cran character vector of cran R package dependencies
 #' @param bioc character vector of bioconductor R package dependencies
@@ -51,6 +51,9 @@ utils <- function(project_directory = '.',
 
 ## Resolve conflicts
 # conflict_prefer(quiet = TRUE)
+
+## Targets options
+tar_option_set(error = "continue")
 
 ')
   writeLines(script,glue('{project_directory}/utils.R'))
