@@ -1,3 +1,11 @@
+# projecttemplates 0.5.6
+
+* `.dockerignore` file is now added to output project to ignore the `_targets` directory if present.
+
+* Target build time and object size are now added to the output pipeline graph in `run.R`.
+
+* `targets` package options set by `tar_options_set()` now moved to `utils.R`.
+
 # projecttemplates 0.5.5
 
 * Fixed the use of user `renv` settings during initialisation to ensure that the user cache is used.
