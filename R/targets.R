@@ -58,11 +58,8 @@ targetsScript <- function(project_directory,type = projectTypes()){
 source("R/utils.R")
 
 "R/functions/" %>%
-  list.files(full.names = T) %>%
+  list.files(full.names = TRUE) %>%
   walk(source)                   
-
-tar_option_set(error = "continue")
-
 ')
   
   writeLines(template,str_c(project_directory,'_targets.R',sep = '/'))
