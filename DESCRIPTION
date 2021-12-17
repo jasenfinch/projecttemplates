@@ -1,6 +1,6 @@
 Package: projecttemplates
 Title: Project Templates for Reproducible Research and Analyses
-Version: 0.5.6
+Version: 0.5.7
 Authors@R: 
     person(given = "Jasen",
            family = "Finch",
@@ -19,6 +19,7 @@ Imports: glue,
   renv,
   rstudioapi,
   stringr,
+  styler,
   callr,
   gh,
   gert

@@ -1,3 +1,11 @@
+# projecttemplates 0.5.7
+
+* Script header added to generated `R/utils.R` file.
+
+* `data` and `exports` directories added to the the generated `.dockerignore` file.
+
+* The generated `_targets.R` file is now formatted using the [`styler`](https://styler.r-lib.org/) package. 
+
 # projecttemplates 0.5.6
 
 * `.dockerignore` file is now added to output project to ignore the `_targets` directory if present.

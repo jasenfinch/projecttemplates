@@ -60,8 +60,6 @@ template <- function(project_name,
     docker(project_name,type,path,renv) 
   }
   
-  
-  
   if (all(git,github,docker,github_actions)){
     githubActions(project_name,path)
   }
