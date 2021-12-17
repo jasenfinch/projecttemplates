@@ -85,6 +85,8 @@ docker run -v $(pwd):/home/{project_name_directory} {str_to_lower(project_name_d
        ") %>%
     write(file = str_c(project_directory,'/README.md'),append = TRUE)
   
-  '_targets' %>% 
+  '_targets
+data
+exports' %>% 
     write(file = str_c(project_directory,'/.dockerignore'))
 }
