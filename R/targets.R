@@ -77,6 +77,7 @@ source("R/utils.R")
 #' }
 #' @importFrom glue glue
 #' @importFrom styler style_file
+#' @importFrom utils capture.output
 #' @export
 
 targetsPipeline <- function(project_directory,type = projectTypes()){
