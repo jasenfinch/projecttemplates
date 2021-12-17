@@ -19,6 +19,7 @@ Imports: glue,
   renv,
   rstudioapi,
   stringr,
+  styler,
   callr,
   gh,
   gert

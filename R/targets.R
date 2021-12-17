@@ -62,7 +62,8 @@ source("R/utils.R")
   walk(source)                   
 ')
   
-  writeLines(template,str_c(project_directory,'_targets.R',sep = '/'))
+  file_path <- str_c(project_directory,'_targets.R',sep = '/')
+  writeLines(template,file_path)
 }
 
 #' Add a targets pipeline
@@ -75,6 +76,7 @@ source("R/utils.R")
 #' targetsPipeline(paste0(tempdir(),'/test_project'),type = 'report')
 #' }
 #' @importFrom glue glue
+#' @importFrom styler style_file
 #' @export
 
 targetsPipeline <- function(project_directory,type = projectTypes()){
@@ -124,13 +126,18 @@ targetsPipeline <- function(project_directory,type = projectTypes()){
                  cmd)
   }
   
+  file_path <- str_c(project_directory,'/_targets.R')
+  
   p <- glue('
+  
   list(
   {cmd}
   )
   ') %>%
-    write(file = str_c(project_directory,'/_targets.R'),
+    write(file = file_path,
           append = TRUE)
+  
+  out <- capture.output(style_file(file_path))
 }
 
 #' Add a targets run script to a project directory
