@@ -43,6 +43,8 @@ utils <- function(project_directory = '.',
   }
   
   script <- glue('
+{scriptHeader()}
+
 ## Load CRAN or Bioconductor package dependencies
 {cran_bioc}
 
