@@ -40,9 +40,7 @@ projectSkeleton <- function(project_directory,force = FALSE){
   
   dir.create(project_directory,recursive = TRUE)
   
-  if (isAvailable()) {
-    initializeProject(project_directory)
-  }
+  rsProject(project_directory)
   
   dir.create(str_c(project_directory,'R','functions',sep = '/'),recursive = TRUE)
   
@@ -52,4 +50,28 @@ projectSkeleton <- function(project_directory,force = FALSE){
   
   dir.create(str_c(project_directory,'exports',sep = '/'))
   
+}
+
+rsProject <- function(project_directory){
+  if (isAvailable()) {
+    initializeProject(project_directory)
+  } else {
+    'Version: 1.0
+
+RestoreWorkspace: Default
+SaveWorkspace: Default
+AlwaysSaveHistory: Default
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: Sweave
+LaTeX: pdfLaTeX' %>% 
+      write(file = str_c(project_directory,
+                       '/',
+                       basename(project_directory),
+                       '.Rproj'))
+  }
 }

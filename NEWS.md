@@ -1,3 +1,11 @@
+# projecttemplates 0.5.8
+
+* The `renv` directory is now included in the generated `.dockerignore` file if argument `renv = TRUE`.
+
+* The RStudio project file is now created even if the project template is generated outside of RStudio.
+
+* Errors encountered during the retrieval of the git signature are now reported during git initialisation.
+
 # projecttemplates 0.5.7
 
 * Script header added to generated `R/utils.R` file.
