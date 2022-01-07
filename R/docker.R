@@ -85,8 +85,21 @@ docker run -v $(pwd):/home/{project_name_directory} {str_to_lower(project_name_d
        ") %>%
     write(file = str_c(project_directory,'/README.md'),append = TRUE)
   
-  '_targets
-data
-exports' %>% 
+  dockerIgnore(project_directory,
+               renv)
+}
+
+dockerIgnore <- function(project_directory,renv = TRUE){
+  
+  ignores <- c('_targets',
+               'data',
+               'exports')
+  
+  if (isTRUE(renv)){
+    ignores <- c(ignores,
+                 'renv')
+  }
+ 
+  ignores %>% 
     write(file = str_c(project_directory,'/.dockerignore'))
 }
