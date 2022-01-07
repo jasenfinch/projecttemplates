@@ -27,7 +27,7 @@ createGit <- function(project_directory,type,ignore = c('.Rhistory','.Rproj.user
   git_add('.*',repo = project_directory)
   git_add('*',repo = project_directory)
   
-  git_signature_status <- try(git_signature_default())
+  git_signature_status <- try(git_signature_default(repo = project_directory))
   
   if (class(git_signature_status) == 'try-error') {
     message('Errors encountered retrieving git credentials. Skipping initial commit.')
