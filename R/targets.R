@@ -171,5 +171,5 @@ visNetwork::visSave(pipeline_graph,
 message("Complete!")
 ')
   
-  writeLines(script,str_c(project_directory,'/run.R'))
+  writeLines(script,str_c(project_directory,'/misc/run.R'))
 }
