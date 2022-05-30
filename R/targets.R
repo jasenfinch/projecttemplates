@@ -167,6 +167,8 @@ targets::tar_make()
 pipeline_graph <- targets::tar_visnetwork(label = c("time", "size"))
 visNetwork::visSave(pipeline_graph,
                     file = "exports/pipeline_graph.html")
+
+message("Complete!")
 ')
   
   writeLines(script,str_c(project_directory,'/run.R'))
