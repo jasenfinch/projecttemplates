@@ -44,10 +44,11 @@ template <- function(project_name,
   
   targets(project_directory,type,renv)
   
-  utils(str_c(project_directory,'/R'),
-        cran = cranPackages(type),
-        github = githubPackages(type),
-        install = !renv)
+  Rprofile(project_directory,
+           install = !renv,
+           renv = renv)
+  
+  utils(str_c(project_directory,'/R'))
   
   output(project_name,project_directory,type)
   
@@ -88,4 +89,11 @@ template <- function(project_name,
 #' @export
 projectTypes <- function(){
   c('report','manuscript','presentation')
+}
+
+githubPackages <- function(type){
+  switch(type,
+         report = character(),
+         presentation = character,
+         manuscript = 'jasenfinch/jfmisc')
 }

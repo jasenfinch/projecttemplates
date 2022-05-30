@@ -4,30 +4,16 @@
 \alias{utils}
 \title{Add R package settings}
 \usage{
-utils(
-  project_directory = ".",
-  cran = character(),
-  bioc = character(),
-  github = character(),
-  install = FALSE
-)
+utils(project_directory = ".")
 }
 \arguments{
 \item{project_directory}{the project directory file path}
-
-\item{cran}{character vector of cran R package dependencies}
-
-\item{bioc}{character vector of bioconductor R package dependencies}
-
-\item{github}{character vector of GitHub R package dependencies in the form `repository/package_name`}
-
-\item{install}{value to set install argument of `pacman` package loading functions}
 }
 \description{
-Add package utilities to a project directory such as package loading and settings.
+Add project utilities to a project directory such as package settings.
 }
 \examples{
 \dontrun{
-utils(paste0(tempdir(),'/test_project'),cran = 'tidyverse')
+utils(paste0(tempdir(),'/test_project'))
 }
 }

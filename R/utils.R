@@ -1,95 +1,23 @@
 #' Add R package settings
-#' @description Add package utilities to a project directory such as package loading and settings.
+#' @description Add project utilities to a project directory such as package settings.
 #' @param project_directory the project directory file path
-#' @param cran character vector of cran R package dependencies
-#' @param bioc character vector of bioconductor R package dependencies
-#' @param github character vector of GitHub R package dependencies in the form `repository/package_name`
-#' @param install value to set install argument of `pacman` package loading functions 
 #' @examples
 #' \dontrun{
-#' utils(paste0(tempdir(),'/test_project'),cran = 'tidyverse')
+#' utils(paste0(tempdir(),'/test_project'))
 #' }
 #' @export
 
-utils <- function(project_directory = '.',
-                  cran = character(),
-                  bioc = character(),
-                  github = character(),
-                  install = FALSE){
-  
-    cran_bioc <- c(cran,bioc) %>% 
-      str_c(collapse = ',') 
-  
-    if (length(github) > 0){
-      github <- github %>% 
-        str_c('"',.,'"') %>% 
-        str_c(collapse = ',')
-    } else {
-      github <- ''
-    }
-    
-    install <- as.character(install)
-  
-  if (nchar(cran_bioc) > 0) {
-    cran_bioc <- glue('pacman::p_load({cran_bioc},install = {install})')
-  } else {
-    cran_bioc <- glue('#pacman::p_load(install = {install})')
-  }
-    
-  if (nchar(github) > 0){
-    github <- glue('pacman::p_load_gh({github},install = {install})')
-  } else {
-    github <- glue('#pacman::p_load_gh(install = {install})')
-  }
+utils <- function(project_directory = '.'){
   
   script <- glue('
 {scriptHeader()}
 
-## Load CRAN or Bioconductor package dependencies
-{cran_bioc}
-
-## Load dependant GitHub package dependencies
-{github}
-
 ## Resolve conflicts
-# conflict_prefer(quiet = TRUE)
+# conflicted::conflict_prefer(quiet = TRUE)
 
 ## Targets options
 tar_option_set(error = "continue")
 
 ')
   writeLines(script,glue('{project_directory}/utils.R'))
-}
-
-cranPackages <- function(type){
-  packs <- c('targets',
-             'tarchetypes',
-             'conflicted',
-             'magrittr',
-             'purrr',
-             'knitr')
-  
-  custom_packs_cran <- list(
-    report = character(),
-    presentation = c('xaringan'),
-    manuscript = c('bookdown')
-  )
-  
-  packs_cran <- packs %>%
-    c(.,custom_packs_cran[[type]])
-  
-  return(packs_cran)
-}
-
-githubPackages <- function(type){
-  custom_packs_gh <- list(
-    report = character(),
-    presentation = character(),
-    manuscript = c("benmarwick/wordcountaddin")
-  )
-  
-  packs_gh <- c() %>%
-    c(.,custom_packs_gh[[type]])
-  
-  return(packs_gh)
 }

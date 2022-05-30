@@ -50,16 +50,9 @@ targetsScript <- function(project_directory,type = projectTypes()){
   
   type <- match.arg(type)
   
-  
-  
   template <- glue('
 {scriptHeader()}
 
-source("R/utils.R")
-
-"R/functions/" %>%
-  list.files(full.names = TRUE) %>%
-  walk(source)                   
 ')
   
   file_path <- str_c(project_directory,'_targets.R',sep = '/')
