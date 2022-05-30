@@ -96,33 +96,33 @@ targetsPipeline <- function(project_directory,type = projectTypes()){
   
   cmd <- glue('
   ## render {type}
-  tar_render(
-              {type},
-              "{type}/{type}.Rmd",
-              output_dir = "exports",
-              quiet = TRUE{formats}
+  tarchetypes::tar_render(
+                          {type},
+                          "{type}/{type}.Rmd",
+                          output_dir = "exports",
+                          quiet = TRUE{formats}
   )
               ')
   
   if (type == 'manuscript') {
     cmd <- str_c('
   ## render tables
-  tar_render(tables,
-             "manuscript/tables.Rmd",
-             output_dir = "exports",
-             quiet = TRUE),
+  tarchetypes::tar_render(tables,
+                          "manuscript/tables.Rmd",
+                          output_dir = "exports",
+                          quiet = TRUE),
   
   ## render figures
-  tar_render(figures,
-             "manuscript/figures.Rmd",
-             output_dir = "exports",
-             quiet = TRUE),
+  tarchetypes::tar_render(figures,
+                          "manuscript/figures.Rmd",
+                          output_dir = "exports",
+                          quiet = TRUE),
   
   ## render supplementary information
-  tar_render(supplementary,
-             "manuscript/supplementary.Rmd",
-             output_dir = "exports",
-             quiet = TRUE),
+  tarchetypes::tar_render(supplementary,
+                          "manuscript/supplementary.Rmd",
+                          output_dir = "exports",
+                          quiet = TRUE),
                  ',
                  cmd)
   }
