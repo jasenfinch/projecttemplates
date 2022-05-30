@@ -126,7 +126,7 @@ opts_chunk$set(echo = FALSE,
 # Acknowlegements
 
 ```{{r check,comment="",cache=FALSE}}
-manuscriptCheck("manuscript/manuscript.Rmd",checks = c("word count"))
+jfmisc::writingChecks("manuscript/manuscript.Rmd",checks = c("word count"))
 ```
 
 # References
@@ -225,11 +225,6 @@ knitr::opts_chunk$set(echo = FALSE,
   if (type == 'manuscript') {
     invisible(file.copy(str_c(template_directory,'template.docx',sep = '/'),str_c(project_directory,type,sep = '/')))
     
-    if (!('wordcountaddin' %in% rownames(installed.packages()))){
-      stop("The manuscript template requires the wordcountaddin package. Install this using:\n\ndevtools::install_github('benmarwick/wordcountaddin')",call. = FALSE)
-    }
-    
-    invisible(file.copy(str_c(template_directory,'manuscriptCheck.R',sep = '/'),str_c(project_directory,'R/functions',sep = '/')))
     writeLines(templates[[type]],str_c(path,'/',type,'.Rmd'))
     writeLines(templates[['figures']],str_c(path,'/','figures.Rmd'))
     writeLines(templates[['tables']],str_c(path,'/','tables.Rmd'))

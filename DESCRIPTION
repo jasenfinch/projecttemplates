@@ -27,5 +27,3 @@ Suggests:
     testthat,
     covr,
     devtools,
-    wordcountaddin
-Remotes: benmarwick/wordcountaddin
