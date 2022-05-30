@@ -23,6 +23,8 @@ docker <- function(project_name,type = 'report',path,renv = TRUE){
   project_directory <- projectDirectory(project_name,
                                         path)
   
+  dir.create(str_c(project_directory,'/misc/docker'))
+  
   r_version <- str_c(R.Version()$major,'.',R.Version()$minor)
   
   if (type == 'manuscript'){
@@ -62,31 +64,25 @@ FROM rocker/verse:{r_version}{texlive_install}{package_install}
 
 WORKDIR /home/{project_name_directory}{renv_text}
 
-ENTRYPOINT ["Rscript","run.R"]
+ENTRYPOINT ["Rscript","misc/run.R"]
        ') %>%
-    writeLines(con = str_c(project_directory,'/Dockerfile'))
+    writeLines(con = str_c(project_directory,'/misc/docker/Dockerfile'))
   
   glue("
   
 ## Docker
 
-This project supports the use of [docker](https://www.docker.com/) containers for reproducible project compilation.
-With docker installed, run the following from a terminal, within the project directory, to build the image.
+This project supports the use of [docker](https://docs.docker.com/get-started/overview/) containers for reproducible project compilation.
+Utility scripts can be found in the directory `misc/docker` to both build the image and run the container which can be executed using `bash misc/build_project.R` in a linux terminal.
 
-``` sh
-docker build . -t {str_to_lower(project_name_directory)}
-````
-
-The project can then be compiled using:
-
-``` sh
-docker run -v $(pwd):/home/{project_name_directory} {str_to_lower(project_name_directory)}
-```
        ") %>%
     write(file = str_c(project_directory,'/README.md'),append = TRUE)
   
   dockerIgnore(project_directory,
                renv)
+  dockerBuild(project_directory,project_name_directory)
+  dockerRun(project_directory,project_name_directory)
+  dockerRunProject(project_directory)
 }
 
 dockerIgnore <- function(project_directory,renv = TRUE){
@@ -102,4 +98,28 @@ dockerIgnore <- function(project_directory,renv = TRUE){
  
   ignores %>% 
     write(file = str_c(project_directory,'/.dockerignore'))
+}
+
+dockerBuild <- function(project_directory,project_name_directory){
+  glue('
+docker build . -f misc/Dockerfile -t {str_to_lower(project_name_directory)}
+                 ') %>% 
+    writeLines(con = str_c(project_directory,'/misc/docker/build_image.sh'))
+}
+
+dockerRun <- function(project_directory,project_name_directory){
+  glue('
+docker run -v ${{pwd}}:/home/{project_name_directory} {str_to_lower(project_name_directory)}
+                 ') %>% 
+    writeLines(con = str_c(project_directory,'/misc/docker/run_container.sh'))
+  
+}
+
+dockerRunProject <- function(project_directory){
+   glue('
+bash misc/docker/build_image.sh
+bash misc/docker/run_container.sh
+        ') %>% 
+    writeLines(con = str_c(project_directory,'/misc/build_project.sh'))
+    
 }
