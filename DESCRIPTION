@@ -11,8 +11,12 @@ URL: https://github.com/jasenfinch/projecttemplates
 BugReports: https://github.com/jasenfinch/projecttemplates/issues
 License: GPL-3
 Encoding: UTF-8
-RoxygenNote: 7.2.0
-Imports: glue,
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.2
+Imports: callr,
+  gert,
+  gh,
+  glue,
   lubridate,
   magrittr,
   pacman,
@@ -20,9 +24,7 @@ Imports: glue,
   rstudioapi,
   stringr,
   styler,
-  callr,
-  gh,
-  gert
+  yaml
 Suggests: 
     testthat,
     covr,

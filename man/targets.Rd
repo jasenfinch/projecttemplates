@@ -4,14 +4,21 @@
 \alias{targets}
 \title{Add targets infrastructure}
 \usage{
-targets(project_directory, type = projectTypes(), ...)
+targets(
+  project_directory,
+  type = projectTypes(),
+  targets_config = list(main = list(reporter_make = "timestamp_positives")),
+  renv = TRUE
+)
 }
 \arguments{
 \item{project_directory}{the project directory file path}
 
 \item{type}{project type. Should be one returned by \code{projectTypes()}.}
 
-\item{...}{arguments to pass to \code{targetsRun()}}
+\item{targets_config}{a list containing the targets configuration to be written to YAML format}
+
+\item{renv}{interface the use of an renv package cache}
 }
 \description{
 Add targets infrastructure to a project directory

@@ -1,8 +1,9 @@
 #' Add targets infrastructure
 #' @description Add targets infrastructure to a project directory
 #' @param project_directory the project directory file path
-#' @param type project type. Should be one returned by \code{projectTypes()}.
-#' @param ... arguments to pass to \code{targetsRun()}
+#' @param type project type. Should be one returned by `projectTypes()`.
+#' @param targets_config a list containing the targets configuration to be written to YAML format
+#' @param renv interface the use of an renv package cache
 #' @examples
 #' \dontrun{
 #' projectSkeleton(paste0(tempdir(),'/test_project'))
@@ -10,7 +11,14 @@
 #' }
 #' @export
 
-targets <- function(project_directory,type = projectTypes(),...){
+targets <- function(project_directory,
+                    type = projectTypes(),
+                    targets_config = list(
+                      main = list(
+                        reporter_make = 'timestamp_positives'
+                      )
+                    ),
+                    renv = TRUE){
   
   if (missing(type)) {
     type <- 'report'
@@ -21,8 +29,9 @@ targets <- function(project_directory,type = projectTypes(),...){
   message('Adding targets infrastructure')
   
   targetsScript(project_directory,type)
+  targetsConfig(project_directory,targets_config)
   targetsPipeline(project_directory,type)
-  targetsRun(project_directory,...)
+  targetsRun(project_directory,renv = renv)
 }
 
 scriptHeader <- function(){
@@ -165,4 +174,28 @@ message("Complete!")
 ')
   
   writeLines(script,str_c(project_directory,'/misc/run.R'))
+}
+
+#' Add a targets configuration file to a project directory
+#' @description Add a _targets`.yaml` configuration file to a project directory.
+#' @param project_directory the project directory file path
+#' @param targets_config a list containing the targets configuration to be written to YAML format
+#' @examples 
+#' \dontrun{
+#' projectSkeleton(paste0(tempdir(),'/test_project'))
+#' targetsConfig(paste0(tempdir(),'/test_project'))
+#' }
+#' @importFrom yaml write_yaml
+#' @export
+
+targetsConfig <- function(project_directory,
+                          targets_config = list(
+                            main = list(
+                              reporter_make = 'timestamp_positives'
+                            )
+                          )){
+  write_yaml(
+    targets_config,
+    glue('{project_directory}/_targets.yaml')
+  )
 }

@@ -42,7 +42,9 @@ template <- function(project_name,
   
   readme(project_name,path,type,renv)
   
-  targets(project_directory,type,renv)
+  targets(project_directory,
+          type = type,
+          renv = renv)
   
   Rprofile(project_directory,
            install = !renv,
@@ -94,6 +96,6 @@ projectTypes <- function(){
 githubPackages <- function(type){
   switch(type,
          report = character(),
-         presentation = character,
+         presentation = character(),
          manuscript = 'jasenfinch/jfmisc')
 }
