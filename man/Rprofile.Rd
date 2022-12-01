@@ -4,19 +4,10 @@
 \alias{Rprofile}
 \title{Add project .Rprofile}
 \usage{
-Rprofile(
-  project_directory,
-  packages = c("magrittr", "targets", "conflicted"),
-  install = FALSE,
-  renv = TRUE
-)
+Rprofile(project_directory, renv = TRUE)
 }
 \arguments{
 \item{project_directory}{the project directory file path}
-
-\item{packages}{character vector R packages to load}
-
-\item{install}{value to set install argument of `pacman` package loading functions}
 
 \item{renv}{add infrastructure for renv package environment management}
 }
