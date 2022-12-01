@@ -47,7 +47,6 @@ template <- function(project_name,
           renv = renv)
   
   Rprofile(project_directory,
-           install = !renv,
            renv = renv)
   
   utils(str_c(project_directory,'/R'))

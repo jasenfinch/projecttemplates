@@ -18,18 +18,8 @@ Rprofile <- function(project_directory,
     renv_restore <- ''
   }
   
-  if (length(packages) > 0){
-    packages <- paste(packages,collapse = ',')
-    
-    package_load <- glue('
-## Load packages
-pacman::p_load({packages},install = {install})
-                         ')
-  }
-  
   script <- glue('
 {scriptHeader()}
-
 {renv_restore}
 library(targets)
 library(jfmisc,include.only = "%>%")
