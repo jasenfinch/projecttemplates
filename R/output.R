@@ -132,7 +132,7 @@ jfmisc::writingChecks("manuscript/manuscript.Rmd",checks = c("word count"))
 # References
 
 '),
-    figures = '---
+    figures = glue('---
 title: Figures
 output: 
   pdf_document:
@@ -141,72 +141,72 @@ output:
 
 {reportHeader()}
 
-```{r setup, include=FALSE}
+```{{r setup, include=FALSE}}
 opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
 ```
-',
-    tables = '---
+'),
+    tables = glue('---
 title: Tables
 output: 
   pdf_document:
     includes:
 header-includes:
-  - \\usepackage{booktabs}
-  - \\usepackage{longtable}
-  - \\usepackage{array}
-  - \\usepackage{multirow}
-  - \\usepackage{wrapfig}
-  - \\usepackage{float}
-  - \\usepackage{colortbl}
-  - \\usepackage{pdflscape}
-  - \\usepackage{tabu}
-  - \\usepackage{threeparttable}
-  - \\usepackage{threeparttablex}
-  - \\usepackage[normalem]{ulem}
-  - \\usepackage{makecell}
-  - \\usepackage{xcolor}
+  - \\usepackage{{booktabs}}
+  - \\usepackage{{longtable}}
+  - \\usepackage{{array}}
+  - \\usepackage{{multirow}}
+  - \\usepackage{{wrapfig}}
+  - \\usepackage{{float}}
+  - \\usepackage{{colortbl}}
+  - \\usepackage{{pdflscape}}
+  - \\usepackage{{tabu}}
+  - \\usepackage{{threeparttable}}
+  - \\usepackage{{threeparttablex}}
+  - \\usepackage[normalem]{{ulem}}
+  - \\usepackage{{makecell}}
+  - \\usepackage{{xcolor}}
 ---
 
 {reportHeader()}
 
-```{r setup, include=FALSE}
+```{{r setup, include=FALSE}}
 knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
 ```
-',
-    supplementary = '---
+'),
+    supplementary = glue('---
 title: Supplementary information
 output: 
   pdf_document:
     keep_tex: false
 header-includes:
-  - \\usepackage{booktabs}
-  - \\usepackage{longtable}
-  - \\usepackage{array}
-  - \\usepackage{multirow}
-  - \\usepackage{wrapfig}
-  - \\usepackage{float}
-  - \\usepackage{colortbl}
-  - \\usepackage{pdflscape}
-  - \\usepackage{tabu}
-  - \\usepackage{threeparttable}
-  - \\usepackage{threeparttablex}
-  - \\usepackage[normalem]{ulem}
-  - \\usepackage{makecell}
-  - \\usepackage{xcolor}
+  - \\usepackage{{booktabs}}
+  - \\usepackage{{longtable}}
+  - \\usepackage{{array}}
+  - \\usepackage{{multirow}}
+  - \\usepackage{{wrapfig}}
+  - \\usepackage{{float}}
+  - \\usepackage{{colortbl}}
+  - \\usepackage{{pdflscape}}
+  - \\usepackage{{tabu}}
+  - \\usepackage{{threeparttable}}
+  - \\usepackage{{threeparttablex}}
+  - \\usepackage[normalem]{{ulem}}
+  - \\usepackage{{makecell}}
+  - \\usepackage{{xcolor}}
 ---
 
 {reportHeader()}
 
-```{r setup, include=FALSE}
+```{{r setup, include=FALSE}}
 knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
 ```
-'
+')
   )
   
   file.create(str_c(path,'/references.bib'))
