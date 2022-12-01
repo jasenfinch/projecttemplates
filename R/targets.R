@@ -62,6 +62,14 @@ targetsScript <- function(project_directory,type = projectTypes()){
   template <- glue('
 {scriptHeader()}
 
+## Source utilities
+source("R/utils.R")
+
+## Load functions
+"R/functions/" %>%
+  list.files(full.names = TRUE) %>%
+  purrr::walk(source)
+
 ')
   
   file_path <- str_c(project_directory,'_targets.R',sep = '/')

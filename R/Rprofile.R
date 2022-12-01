@@ -37,13 +37,9 @@ pacman::p_load({packages},install = {install})
 {scriptHeader()}
 
 {renv_restore}
-{package_load}
-## Source utilities
-source("utils.R")
-
-## Load functions
-"R/functions/" %>%
-  list.files(full.names = TRUE) %>%
-  purrr::walk(source)
+library(targets)
+library(jfmisc,include.only = "%>%")
                  ')
+  
+  write(script,file = paste0(project_directory,'/.Rprofile'))
 }
