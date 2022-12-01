@@ -95,7 +95,7 @@ projectTypes <- function(){
 
 githubPackages <- function(type){
   switch(type,
-         report = character(),
-         presentation = character(),
+         report = 'jasenfinch/jfmisc',
+         presentation = 'jasenfinch/jfmisc',
          manuscript = 'jasenfinch/jfmisc')
 }
