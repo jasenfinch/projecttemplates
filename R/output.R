@@ -45,7 +45,7 @@ bibliography: references.bib
 {reportHeader()}
 
 ```{{r setup, include=FALSE}}
-opts_chunk$set(echo = FALSE,message = FALSE,warning = FALSE)
+knitr::opts_chunk$set(echo = FALSE,message = FALSE,warning = FALSE)
 ```
 '),
     presentation = glue('
@@ -65,7 +65,7 @@ output:
 {reportHeader()}
 
 ```{{r setup, include=FALSE}}
-opts_chunk$set(echo = FALSE,dpi = 300,message = FALSE)
+knitr::opts_chunk$set(echo = FALSE,dpi = 300,message = FALSE)
 options(htmltools.dir.version = FALSE)
 ```
 
@@ -98,7 +98,7 @@ bibliography: references.bib
 {reportHeader()}
 
 ```{{r setup, include=FALSE}}
-opts_chunk$set(echo = FALSE,
+knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
 ```
@@ -142,7 +142,7 @@ output:
 {reportHeader()}
 
 ```{{r setup, include=FALSE}}
-opts_chunk$set(echo = FALSE,
+knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
 ```
