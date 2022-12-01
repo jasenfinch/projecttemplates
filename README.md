@@ -14,7 +14,7 @@ Quick and simple generation of [targets](https://docs.ropensci.org/targets/)  an
 
 Install from github using `devtools`:
 
-```
+```r
 devtools::install_github('jasenfinch/projecttemplates')
 ```
 
@@ -23,6 +23,11 @@ devtools::install_github('jasenfinch/projecttemplates')
 Templates include **report**, **manuscript** and **presentation**.
 The following will generate a template report project in the current working directory:
 
-```
-projecttemplates::template('A project title',path = '.',type = 'report',start = FALSE)
+```r
+projecttemplates::template(
+  'A project title',
+  path = '.',
+  type = 'report',
+  start = FALSE
+)
 ```
