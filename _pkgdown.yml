@@ -1,1 +1,4 @@
 url: https://jasenfinch.github.io/projecttemplates/
+template:
+  bootstrap: 5
+

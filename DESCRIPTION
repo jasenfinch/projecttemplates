@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "jsf9@aber.ac.uk")
 Description: Project templates for reproducible research and analyses.
-URL: https://github.com/jasenfinch/projecttemplates
+URL: https://jasenfinch.github.io/projecttemplates/
 BugReports: https://github.com/jasenfinch/projecttemplates/issues
 License: GPL-3
 Encoding: UTF-8
