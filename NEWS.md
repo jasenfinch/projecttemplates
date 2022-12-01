@@ -1,3 +1,27 @@
+# projecttemplates 0.6.0
+
+* The template `run.R` script now outputs to `misc/run.R`. The template `README.md` has now been updated to reflect this.
+
+* The template `misc/run.R` script now outputs a message to the console upon completion.
+
+* The [`tarchetypes`](https://docs.ropensci.org/tarchetypes/) package is now referenced directly in template targets scripts.
+
+* The template docker infrastructure now outputs to the directory `misc/docker` and now includes an image build script (`/misc/docker/build_image.sh`) and a container run script (`/misc/docker/run_container.sh`).
+
+* [`jfmisc::writingChecks()`](https://jasenfinch.github.io/jfmisc/reference/writingChecks.html) now replaces the `manuscriptChecks()` function in the `manuscript` template.
+
+* The `renv::restore()` command has now been moved to the template `.Rprofile`.
+
+* The [`targets`](https://docs.ropensci.org/targets/) package and the magrittr `%>%` are now loaded via the template `.Rprofile`.
+
+* The `bioconductor` argument replaces the `bioc` argument in `renvInitialise()` to stipulate the Bioconductor version to use.
+
+* Added the `targetsConfig()` function to add a `_targets.yaml` to a project directory. This file is added automatically by the `template()` function.
+
+* Fixed incorrect outputs in the figures, tables and supplementary output Rmarkdown files in the `manuscript` template.
+
+* [`knitr`](https://yihui.org/knitr/) is now referenced directly in function calls in output template Rmarkdown files.
+
 # projecttemplates 0.5.8
 
 * The `renv` directory is now included in the generated `.dockerignore` file if argument `renv = TRUE`.
