@@ -55,7 +55,7 @@ template <- function(project_name,
   
   if(isTRUE(renv)){
     renvInitialise(project_directory,
-                   github = githubPackages(type)) 
+                   dependencies = githubPackages(type)) 
   }
   
   if(isTRUE(docker)){

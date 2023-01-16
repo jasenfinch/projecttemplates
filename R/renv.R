@@ -2,7 +2,7 @@
 #' @description Initialise renv infrastructure in a project directory.
 #' @param project_directory the project directory file path
 #' @param bioconductor The version of bioconductor to use with the project. Set to TRUE to use the default version of Bioconductor.
-#' @param github GitHub packages to install into the cache upon initialisation
+#' @param dependencies additional package dependencies to install into the cache upon initialisation
 #' @examples 
 #' \dontrun{
 #' projectSkeleton(paste0(tempdir(),'/test_project'))
@@ -14,9 +14,9 @@
 
 renvInitialise <- function(project_directory,
                            bioconductor = FALSE,
-                           github = character()){
+                           dependencies = character()){
   message('Initialising renv cache')
-  renv_init <- r_copycat(function(project_directory,bioconductor,github){
+  renv_init <- r_copycat(function(project_directory,bioconductor,dependencies){
     
     project_directory <- normalizePath(project_directory)
     
@@ -24,8 +24,8 @@ renvInitialise <- function(project_directory,
                bioconductor = bioconductor,
                bare = TRUE)
     
-    if (length(github) > 0) {
-      renv::install(github,project = project_directory)  
+    if (length(dependencies) > 0) {
+      renv::install(dependencies,project = project_directory)  
     }
     
     renv::hydrate(project = project_directory)
@@ -36,5 +36,5 @@ renvInitialise <- function(project_directory,
   },
   args = list(project_directory = project_directory,
               bioconductor = bioconductor,
-              github = github))
+              dependencies = dependencies))
 }
