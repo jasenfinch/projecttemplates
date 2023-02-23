@@ -4,14 +4,18 @@
 \alias{renvInitialise}
 \title{Initialise renv infrastructure}
 \usage{
-renvInitialise(project_directory, bioc = character(), github = character())
+renvInitialise(
+  project_directory,
+  bioconductor = FALSE,
+  dependencies = character()
+)
 }
 \arguments{
 \item{project_directory}{the project directory file path}
 
-\item{bioc}{bioconductor packages to install into the cache upon initialisation}
+\item{bioconductor}{The version of bioconductor to use with the project. Set to TRUE to use the default version of Bioconductor.}
 
-\item{github}{GitHub packages to install into the cache upon initialisation}
+\item{dependencies}{additional package dependencies to install into the cache upon initialisation}
 }
 \description{
 Initialise renv infrastructure in a project directory.

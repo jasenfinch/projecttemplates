@@ -42,18 +42,20 @@ template <- function(project_name,
   
   readme(project_name,path,type,renv)
   
-  targets(project_directory,type,renv)
+  targets(project_directory,
+          type = type,
+          renv = renv)
   
-  utils(str_c(project_directory,'/R'),
-        cran = cranPackages(type),
-        github = githubPackages(type),
-        install = !renv)
+  Rprofile(project_directory,
+           renv = renv)
+  
+  utils(str_c(project_directory,'/R'))
   
   output(project_name,project_directory,type)
   
   if(isTRUE(renv)){
     renvInitialise(project_directory,
-                   github = githubPackages(type)) 
+                   dependencies = githubPackages(type)) 
   }
   
   if(isTRUE(docker)){
@@ -88,4 +90,11 @@ template <- function(project_name,
 #' @export
 projectTypes <- function(){
   c('report','manuscript','presentation')
+}
+
+githubPackages <- function(type){
+  switch(type,
+         report = 'jasenfinch/jfmisc',
+         presentation = 'jasenfinch/jfmisc',
+         manuscript = 'jasenfinch/jfmisc')
 }

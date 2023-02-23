@@ -45,7 +45,7 @@ bibliography: references.bib
 {reportHeader()}
 
 ```{{r setup, include=FALSE}}
-opts_chunk$set(echo = FALSE,message = FALSE,warning = FALSE)
+knitr::opts_chunk$set(echo = FALSE,message = FALSE,warning = FALSE)
 ```
 '),
     presentation = glue('
@@ -65,7 +65,7 @@ output:
 {reportHeader()}
 
 ```{{r setup, include=FALSE}}
-opts_chunk$set(echo = FALSE,dpi = 300,message = FALSE)
+knitr::opts_chunk$set(echo = FALSE,dpi = 300,message = FALSE)
 options(htmltools.dir.version = FALSE)
 ```
 
@@ -98,7 +98,7 @@ bibliography: references.bib
 {reportHeader()}
 
 ```{{r setup, include=FALSE}}
-opts_chunk$set(echo = FALSE,
+knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
 ```
@@ -126,13 +126,13 @@ opts_chunk$set(echo = FALSE,
 # Acknowlegements
 
 ```{{r check,comment="",cache=FALSE}}
-manuscriptCheck("manuscript/manuscript.Rmd",checks = c("word count"))
+jfmisc::writingChecks("manuscript/manuscript.Rmd",checks = c("word count"))
 ```
 
 # References
 
 '),
-    figures = '---
+    figures = glue('---
 title: Figures
 output: 
   pdf_document:
@@ -141,72 +141,72 @@ output:
 
 {reportHeader()}
 
-```{r setup, include=FALSE}
-opts_chunk$set(echo = FALSE,
+```{{r setup, include=FALSE}}
+knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
 ```
-',
-    tables = '---
+'),
+    tables = glue('---
 title: Tables
 output: 
   pdf_document:
     includes:
 header-includes:
-  - \\usepackage{booktabs}
-  - \\usepackage{longtable}
-  - \\usepackage{array}
-  - \\usepackage{multirow}
-  - \\usepackage{wrapfig}
-  - \\usepackage{float}
-  - \\usepackage{colortbl}
-  - \\usepackage{pdflscape}
-  - \\usepackage{tabu}
-  - \\usepackage{threeparttable}
-  - \\usepackage{threeparttablex}
-  - \\usepackage[normalem]{ulem}
-  - \\usepackage{makecell}
-  - \\usepackage{xcolor}
+  - \\usepackage{{booktabs}}
+  - \\usepackage{{longtable}}
+  - \\usepackage{{array}}
+  - \\usepackage{{multirow}}
+  - \\usepackage{{wrapfig}}
+  - \\usepackage{{float}}
+  - \\usepackage{{colortbl}}
+  - \\usepackage{{pdflscape}}
+  - \\usepackage{{tabu}}
+  - \\usepackage{{threeparttable}}
+  - \\usepackage{{threeparttablex}}
+  - \\usepackage[normalem]{{ulem}}
+  - \\usepackage{{makecell}}
+  - \\usepackage{{xcolor}}
 ---
 
 {reportHeader()}
 
-```{r setup, include=FALSE}
+```{{r setup, include=FALSE}}
 knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
 ```
-',
-    supplementary = '---
+'),
+    supplementary = glue('---
 title: Supplementary information
 output: 
   pdf_document:
     keep_tex: false
 header-includes:
-  - \\usepackage{booktabs}
-  - \\usepackage{longtable}
-  - \\usepackage{array}
-  - \\usepackage{multirow}
-  - \\usepackage{wrapfig}
-  - \\usepackage{float}
-  - \\usepackage{colortbl}
-  - \\usepackage{pdflscape}
-  - \\usepackage{tabu}
-  - \\usepackage{threeparttable}
-  - \\usepackage{threeparttablex}
-  - \\usepackage[normalem]{ulem}
-  - \\usepackage{makecell}
-  - \\usepackage{xcolor}
+  - \\usepackage{{booktabs}}
+  - \\usepackage{{longtable}}
+  - \\usepackage{{array}}
+  - \\usepackage{{multirow}}
+  - \\usepackage{{wrapfig}}
+  - \\usepackage{{float}}
+  - \\usepackage{{colortbl}}
+  - \\usepackage{{pdflscape}}
+  - \\usepackage{{tabu}}
+  - \\usepackage{{threeparttable}}
+  - \\usepackage{{threeparttablex}}
+  - \\usepackage[normalem]{{ulem}}
+  - \\usepackage{{makecell}}
+  - \\usepackage{{xcolor}}
 ---
 
 {reportHeader()}
 
-```{r setup, include=FALSE}
+```{{r setup, include=FALSE}}
 knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
 ```
-'
+')
   )
   
   file.create(str_c(path,'/references.bib'))
@@ -225,11 +225,6 @@ knitr::opts_chunk$set(echo = FALSE,
   if (type == 'manuscript') {
     invisible(file.copy(str_c(template_directory,'template.docx',sep = '/'),str_c(project_directory,type,sep = '/')))
     
-    if (!('wordcountaddin' %in% rownames(installed.packages()))){
-      stop("The manuscript template requires the wordcountaddin package. Install this using:\n\ndevtools::install_github('benmarwick/wordcountaddin')",call. = FALSE)
-    }
-    
-    invisible(file.copy(str_c(template_directory,'manuscriptCheck.R',sep = '/'),str_c(project_directory,'R/functions',sep = '/')))
     writeLines(templates[[type]],str_c(path,'/',type,'.Rmd'))
     writeLines(templates[['figures']],str_c(path,'/','figures.Rmd'))
     writeLines(templates[['tables']],str_c(path,'/','tables.Rmd'))

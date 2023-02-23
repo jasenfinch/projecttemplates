@@ -1,8 +1,9 @@
 #' Add targets infrastructure
 #' @description Add targets infrastructure to a project directory
 #' @param project_directory the project directory file path
-#' @param type project type. Should be one returned by \code{projectTypes()}.
-#' @param ... arguments to pass to \code{targetsRun()}
+#' @param type project type. Should be one returned by `projectTypes()`.
+#' @param targets_config a list containing the targets configuration to be written to YAML format
+#' @param renv interface the use of an renv package cache
 #' @examples
 #' \dontrun{
 #' projectSkeleton(paste0(tempdir(),'/test_project'))
@@ -10,7 +11,14 @@
 #' }
 #' @export
 
-targets <- function(project_directory,type = projectTypes(),...){
+targets <- function(project_directory,
+                    type = projectTypes(),
+                    targets_config = list(
+                      main = list(
+                        reporter_make = 'timestamp_positives'
+                      )
+                    ),
+                    renv = TRUE){
   
   if (missing(type)) {
     type <- 'report'
@@ -21,8 +29,9 @@ targets <- function(project_directory,type = projectTypes(),...){
   message('Adding targets infrastructure')
   
   targetsScript(project_directory,type)
+  targetsConfig(project_directory,targets_config)
   targetsPipeline(project_directory,type)
-  targetsRun(project_directory,...)
+  targetsRun(project_directory,renv = renv)
 }
 
 scriptHeader <- function(){
@@ -50,16 +59,17 @@ targetsScript <- function(project_directory,type = projectTypes()){
   
   type <- match.arg(type)
   
-  
-  
   template <- glue('
 {scriptHeader()}
 
+## Source utilities
 source("R/utils.R")
 
+## Load functions
 "R/functions/" %>%
   list.files(full.names = TRUE) %>%
-  walk(source)                   
+  purrr::walk(source)
+
 ')
   
   file_path <- str_c(project_directory,'_targets.R',sep = '/')
@@ -96,33 +106,33 @@ targetsPipeline <- function(project_directory,type = projectTypes()){
   
   cmd <- glue('
   ## render {type}
-  tar_render(
-              {type},
-              "{type}/{type}.Rmd",
-              output_dir = "exports",
-              quiet = TRUE{formats}
+  tarchetypes::tar_render(
+                          {type},
+                          "{type}/{type}.Rmd",
+                          output_dir = "exports",
+                          quiet = TRUE{formats}
   )
               ')
   
   if (type == 'manuscript') {
     cmd <- str_c('
   ## render tables
-  tar_render(tables,
-             "manuscript/tables.Rmd",
-             output_dir = "exports",
-             quiet = TRUE),
+  tarchetypes::tar_render(tables,
+                          "manuscript/tables.Rmd",
+                          output_dir = "exports",
+                          quiet = TRUE),
   
   ## render figures
-  tar_render(figures,
-             "manuscript/figures.Rmd",
-             output_dir = "exports",
-             quiet = TRUE),
+  tarchetypes::tar_render(figures,
+                          "manuscript/figures.Rmd",
+                          output_dir = "exports",
+                          quiet = TRUE),
   
   ## render supplementary information
-  tar_render(supplementary,
-             "manuscript/supplementary.Rmd",
-             output_dir = "exports",
-             quiet = TRUE),
+  tarchetypes::tar_render(supplementary,
+                          "manuscript/supplementary.Rmd",
+                          output_dir = "exports",
+                          quiet = TRUE),
                  ',
                  cmd)
   }
@@ -167,7 +177,33 @@ targets::tar_make()
 pipeline_graph <- targets::tar_visnetwork(label = c("time", "size"))
 visNetwork::visSave(pipeline_graph,
                     file = "exports/pipeline_graph.html")
+
+message("Complete!")
 ')
   
-  writeLines(script,str_c(project_directory,'/run.R'))
+  writeLines(script,str_c(project_directory,'/misc/run.R'))
+}
+
+#' Add a targets configuration file to a project directory
+#' @description Add a _targets`.yaml` configuration file to a project directory.
+#' @param project_directory the project directory file path
+#' @param targets_config a list containing the targets configuration to be written to YAML format
+#' @examples 
+#' \dontrun{
+#' projectSkeleton(paste0(tempdir(),'/test_project'))
+#' targetsConfig(paste0(tempdir(),'/test_project'))
+#' }
+#' @importFrom yaml write_yaml
+#' @export
+
+targetsConfig <- function(project_directory,
+                          targets_config = list(
+                            main = list(
+                              reporter_make = 'timestamp_positives'
+                            )
+                          )){
+  write_yaml(
+    targets_config,
+    glue('{project_directory}/_targets.yaml')
+  )
 }

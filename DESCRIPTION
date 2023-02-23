@@ -1,18 +1,22 @@
 Package: projecttemplates
 Title: Project Templates for Reproducible Research and Analyses
-Version: 0.5.8
+Version: 0.6.0
 Authors@R: 
     person(given = "Jasen",
            family = "Finch",
            role = c("aut", "cre"),
            email = "jsf9@aber.ac.uk")
 Description: Project templates for reproducible research and analyses.
-URL: https://github.com/jasenfinch/projecttemplates
+URL: https://jasenfinch.github.io/projecttemplates/
 BugReports: https://github.com/jasenfinch/projecttemplates/issues
 License: GPL-3
 Encoding: UTF-8
-RoxygenNote: 7.1.2
-Imports: glue,
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: callr,
+  gert,
+  gh,
+  glue,
   lubridate,
   magrittr,
   pacman,
@@ -20,12 +24,8 @@ Imports: glue,
   rstudioapi,
   stringr,
   styler,
-  callr,
-  gh,
-  gert
+  yaml
 Suggests: 
     testthat,
     covr,
     devtools,
-    wordcountaddin
-Remotes: benmarwick/wordcountaddin
