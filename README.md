@@ -12,10 +12,10 @@ Quick and simple generation of [targets](https://docs.ropensci.org/targets/)  an
 
 ### Installation
 
-Install from github using `devtools`:
+Install the package from GitHub using:
 
 ```r
-devtools::install_github('jasenfinch/projecttemplates')
+remotes::install_github('jasenfinch/projecttemplates')
 ```
 
 ### Quick start
@@ -36,6 +36,6 @@ projecttemplates::template(
 
 The package documentation can be browsed online at <https://jasenfinch.github.io/projecttemplates/>. 
 
-If you believe you've found a bug in `mzAnnotation`, please file a bug (and, if
+If you believe you've found a bug in `projecttemplates`, please file a bug (and, if
 possible, a [reproducible example](https://reprex.tidyverse.org)) at
 <https://github.com/jasenfinch/projecttemplates/issues>.
