@@ -1,6 +1,6 @@
 Package: projecttemplates
 Title: Project Templates for Reproducible Research and Analyses
-Version: 0.6.0
+Version: 0.6.1
 Authors@R: 
     person(given = "Jasen",
            family = "Finch",

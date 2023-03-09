@@ -7,7 +7,8 @@
 renvInitialise(
   project_directory,
   bioconductor = FALSE,
-  dependencies = character()
+  dependencies = character(),
+  sandbox = FALSE
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ renvInitialise(
 \item{bioconductor}{The version of bioconductor to use with the project. Set to TRUE to use the default version of Bioconductor.}
 
 \item{dependencies}{additional package dependencies to install into the cache upon initialisation}
+
+\item{sandbox}{Should sandboxing be enabled for \code{renv}? See the \code{renv} \href{https://rstudio.github.io/renv/reference/config.html}{config documentation} for more information on sandboxing in \code{renv}.}
 }
 \description{
 Initialise renv infrastructure in a project directory.
