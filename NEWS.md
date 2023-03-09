@@ -1,3 +1,7 @@
+# projecttemplates 0.6.1
+
+* Added the `sandbox` argument to `renvInitialise()` to allow the selection of whether sandboxing is used during [`renv`](https://rstudio.github.io/renv/index.html) initialisation.
+
 # projecttemplates 0.6.0
 
 * The template `run.R` script now outputs to `misc/run.R`. The template `README.md` has now been updated to reflect this.
@@ -58,7 +62,7 @@
 
 # projecttemplates 0.5.3
 
-* Added [`pacman`]( https://CRAN.R-project.org/package=pacman) as an import to ensure that it is installed in case `renv = FALSE` is used.
+* Added [`pacman`](https://CRAN.R-project.org/package=pacman) as an import to ensure that it is installed in case `renv = FALSE` is used.
 
 * Project templates targets error [option](https://docs.ropensci.org/targets/reference/tar_option_set.html) now set to `"continue"` to enable the pipeline to continue if an error is encountered.
 
@@ -74,7 +78,7 @@
 
 * The value of the `install` argument of [`pacman`]( https://CRAN.R-project.org/package=pacman) loading functions can now be set in `utils()`.
 
-* In `template()`, the [`pacman`]( https://CRAN.R-project.org/package=pacman) `install` argument in `utils()` is now dependant on the value of the `renv` argument.
+* In `template()`, the [`pacman`](https://CRAN.R-project.org/package=pacman) `install` argument in `utils()` is now dependant on the value of the `renv` argument.
 
 * The installation of project package dependencies is now added to the docker file when the `renv` argument is `FALSE`.
 

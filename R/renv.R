@@ -3,6 +3,7 @@
 #' @param project_directory the project directory file path
 #' @param bioconductor The version of bioconductor to use with the project. Set to TRUE to use the default version of Bioconductor.
 #' @param dependencies additional package dependencies to install into the cache upon initialisation
+#' @param sandbox Should sandboxing be enabled for `renv`? See the `renv` [config documentation](https://rstudio.github.io/renv/reference/config.html) for more information on sandboxing in `renv`.
 #' @examples 
 #' \dontrun{
 #' projectSkeleton(paste0(tempdir(),'/test_project'))
@@ -14,11 +15,14 @@
 
 renvInitialise <- function(project_directory,
                            bioconductor = FALSE,
-                           dependencies = character()){
+                           dependencies = character(),
+                           sandbox = FALSE){
   message('Initialising renv cache')
-  renv_init <- r_copycat(function(project_directory,bioconductor,dependencies){
+  renv_init <- r_copycat(function(project_directory,bioconductor,dependencies,sandbox){
     
     project_directory <- normalizePath(project_directory)
+    
+    options(renv.config.sandbox.enabled = sandbox)
     
     renv::init(project = project_directory,
                bioconductor = bioconductor,
@@ -36,5 +40,6 @@ renvInitialise <- function(project_directory,
   },
   args = list(project_directory = project_directory,
               bioconductor = bioconductor,
-              dependencies = dependencies))
+              dependencies = dependencies,
+              sandbox = sandbox))
 }
