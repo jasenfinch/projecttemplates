@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">projecttemplates</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +54,8 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">renvInitialise</span><span class="op">(</span></span>
 <span>  <span class="va">project_directory</span>,</span>
 <span>  bioconductor <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  dependencies <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  dependencies <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  sandbox <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -70,6 +71,10 @@
 
 <dt>dependencies</dt>
 <dd><p>additional package dependencies to install into the cache upon initialisation</p></dd>
+
+
+<dt>sandbox</dt>
+<dd><p>Should sandboxing be enabled for <code>renv</code>? See the <code>renv</code> <a href="https://rstudio.github.io/renv/reference/config.html" class="external-link">config documentation</a> for more information on sandboxing in <code>renv</code>.</p></dd>
 
 </dl></div>
 
