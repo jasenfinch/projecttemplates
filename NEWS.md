@@ -1,3 +1,7 @@
+# projecttemplates 0.6.2
+
+* Fix for [`renv`](https://rstudio.github.io/renv/index.html) when Bioconductor dependencies are included in argument `dependencies`.
+
 # projecttemplates 0.6.1
 
 * Added the `sandbox` argument to `renvInitialise()` to allow the selection of whether sandboxing is used during [`renv`](https://rstudio.github.io/renv/index.html) initialisation.
