@@ -37,8 +37,8 @@ renvInitialise <- function(project_directory,
         ) 
       }
       
-      dependencies %>%
         lapply(
+          dependencies,
           function(x,project_directory){renv::install(x,project = project_directory)},
           project_directory = project_directory
         )
