@@ -29,8 +29,20 @@ renvInitialise <- function(project_directory,
                bare = TRUE)
     
     if (length(dependencies) > 0) {
-      renv::install(dependencies,project = project_directory)  
-    }
+      
+      if (!isFALSE(bioconductor)){
+        dependencies <- c(
+          'BiocManager',
+          dependencies
+        ) 
+      }
+      
+        lapply(
+          dependencies,
+          function(x,project_directory){renv::install(x,project = project_directory)},
+          project_directory = project_directory
+        )
+      }
     
     renv::hydrate(project = project_directory)
     
