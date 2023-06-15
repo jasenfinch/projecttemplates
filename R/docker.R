@@ -102,13 +102,17 @@ dockerIgnore <- function(project_directory,renv = TRUE){
 
 dockerBuild <- function(project_directory,project_name_directory){
   glue('
-docker build . -f misc/Dockerfile -t {str_to_lower(project_name_directory)}
+#!/bin/bash
+
+docker build . -f misc/docker/Dockerfile -t {str_to_lower(project_name_directory)}
                  ') %>% 
     writeLines(con = str_c(project_directory,'/misc/docker/build_image.sh'))
 }
 
 dockerRun <- function(project_directory,project_name_directory){
   glue('
+#!/bin/bash
+
 docker run -v ${{pwd}}:/home/{project_name_directory} {str_to_lower(project_name_directory)}
                  ') %>% 
     writeLines(con = str_c(project_directory,'/misc/docker/run_container.sh'))
@@ -117,6 +121,8 @@ docker run -v ${{pwd}}:/home/{project_name_directory} {str_to_lower(project_name
 
 dockerRunProject <- function(project_directory){
    glue('
+#!/bin/bash
+
 bash misc/docker/build_image.sh
 bash misc/docker/run_container.sh
         ') %>% 
