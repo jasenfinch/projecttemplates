@@ -4,7 +4,7 @@
 #' @param path target file path for project directory 
 #' @param private TRUE/FALSE. Should the GitHub repository be private? Evaluated only if arguments \code{git} and \code{github} are TRUE.
 #' @importFrom gh gh gh_token
-#' @importFrom gert git_push git_remote_add
+#' @importFrom gert git_push git_remote_add git_branch
 #' @export
 
 createGithub <- function(project_name,path,private = TRUE){
@@ -25,8 +25,11 @@ createGithub <- function(project_name,path,private = TRUE){
     .token = gh_token()
   )
   
+  branch_ref <- git_branch(repo = project_directory) %>% 
+    paste0('refs/heads/',.)
+    
   git_remote_add(url = create$ssh_url,repo = project_directory)
-  git_push('origin',refspec ='refs/heads/master' ,repo = project_directory)
+  git_push('origin',refspec = branch_ref ,repo = project_directory)
   
   message(glue('Project repository created at {create$html_url}.'))
 }
