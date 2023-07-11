@@ -27,9 +27,9 @@ template <- function(project_name,
                      renv = TRUE,
                      docker = TRUE, 
                      git = TRUE, 
-                     github = TRUE, 
-                     private = TRUE, 
-                     github_actions = TRUE, 
+                     github = FALSE, 
+                     private = FALSE, 
+                     github_actions = FALSE, 
                      force = FALSE,
                      start = TRUE){
   
