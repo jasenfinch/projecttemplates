@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">projecttemplates</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,6 +44,13 @@
       <small>Source: <a href="https://github.com/jasenfinch/projecttemplates/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.6.3" id="projecttemplates-063">projecttemplates 0.6.3<a class="anchor" aria-label="anchor" href="#projecttemplates-063"></a></h2>
+<ul><li><p>Fixed the path to the Dockerfile in the project build script (<code>misc/docker/build_image.sh</code>).</p></li>
+<li><p>Added bash headers to template shell scripts.</p></li>
+<li><p>Set the default values of the arguments <code>github</code>, <code>private</code> and <code>github_actions</code> in <code><a href="../reference/template.html">template()</a></code> to <code>FALSE</code>.</p></li>
+<li><p>Fixed the branch reference for adding a project to GitHub.</p></li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.6.2" id="projecttemplates-062">projecttemplates 0.6.2<a class="anchor" aria-label="anchor" href="#projecttemplates-062"></a></h2>
 <ul><li>Fix for <a href="https://rstudio.github.io/renv/index.html" class="external-link"><code>renv</code></a> when Bioconductor dependencies are included in argument <code>dependencies</code>.</li>
@@ -164,7 +171,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.4" id="projecttemplates-034">projecttemplates 0.3.4<a class="anchor" aria-label="anchor" href="#projecttemplates-034"></a></h2>
-<ul><li><p>Removed use of the now defunct <code><a href="https://usethis.r-lib.org/reference/git_credentials.html" class="external-link">usethis::git_credentials()</a></code> and <code><a href="https://usethis.r-lib.org/reference/usethis-defunct.html" class="external-link">usethis::github_token()</a></code>.</p></li>
+<ul><li><p>Removed use of the now defunct <code><a href="https://usethis.r-lib.org/reference/git_credentials.html" class="external-link">usethis::git_credentials()</a></code> and <code><a href="https://usethis.r-lib.org/reference/browse_github_token.html" class="external-link">usethis::github_token()</a></code>.</p></li>
 <li><p>All git interaction now uses the <code>gert</code> package instead of <code>git2r</code>.</p></li>
 </ul></div>
     <div class="section level2">
