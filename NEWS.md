@@ -1,3 +1,13 @@
+# projecttemplates 0.6.3
+
+* Fixed the path to the Dockerfile in the project build script (`misc/docker/build_image.sh`).
+
+* Added bash headers to template shell scripts.
+
+* Set the default values of the arguments `github`, `private` and `github_actions` in `template()` to `FALSE`. 
+
+* Fixed the branch reference for adding a project to GitHub.
+
 # projecttemplates 0.6.2
 
 * Fix for [`renv`](https://rstudio.github.io/renv/index.html) when Bioconductor dependencies are included in argument `dependencies`.
